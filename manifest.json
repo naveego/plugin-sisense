@@ -1,0 +1,74 @@
+{
+  "id": "plugin-naveego-legacy",
+  "displayName": "Naveego Legacy Publisher",
+  "description": "Publisher which pulls data from a Naveego's Legacy Golden Record service",
+  "apiVersion": "2",
+  "versionDescription": "Version 2",
+  "version": "1.0.22",
+  "iconFile": "icon.jpg",
+  "executable": "Plugin-Naveego-Legacy",
+  "kind": "publisher",
+  "os": "$GOOS",
+  "arch": "$GOARCH",
+  "canProduceMultipleSchemas": true,
+  "canAcceptQueryBasedSchemas": false,
+  "canUseOAuth": false,
+  "canWrite": false,
+  "tenants": [
+    "pennenergy2",
+    "vandelay"
+  ],
+  "configSchema": {
+    "ui": {
+      "ui:order": [
+        "OAuthClientId",
+        "OAuthClientSecret",
+        "Username",
+        "Password",
+        "ConvertNullToZero"
+      ],
+      "Password": {
+        "ui:widget": "password"
+      },
+      "OAuthClientSecret": {
+        "ui:widget": "password"
+      }
+    },
+    "schema": {
+      "type": "object",
+      "properties": {
+        "OAuthClientId" : {
+          "type": "string",
+          "title": "OAuthClientId",
+          "description": "The oauth client id to use for authentication"
+        },
+        "OAuthClientSecret": {
+          "type": "string",
+          "title": "OAuthClientSecret",
+          "description": "The oauth client secret to use for authentication"
+        },
+        "Username": {
+          "type": "string",
+          "title": "Username",
+          "description": "The username to use for authentication"
+        },
+        "Password": {
+          "type": "string",
+          "title": "Password",
+          "description": "The password to use for authentication"
+        }, 
+        "ConvertNullToZero": {
+          "type": "string",
+          "title": "Convert Nulls to 0",
+          "description": "Properties listed here will have null values converted to  Separate multiple with a comma."
+        }
+      },
+      "required": [
+        "OAuthClientId",
+        "OAuthClientSecret",
+        "Username",
+        "Password"
+      ]
+    }
+  }
+}
