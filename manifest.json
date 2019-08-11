@@ -1,6 +1,6 @@
 {
   "id": "plugin-sisense",
-  "displayName": "Naveego Sisense Publisher",
+  "displayName": "Sisense",
   "description": "Publisher which pulls data from a Sisense ElastiCube",
   "apiVersion": "2",
   "versionDescription": "Version 2",
