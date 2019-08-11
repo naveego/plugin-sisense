@@ -357,7 +357,7 @@ namespace Plugin_Naveego_Legacy.Plugin
 
         private string ToResourceUri(string resource)
         {
-            return WebUtility.UrlEncode($"http://{_formSettings.ServerName}/api/{resource}");
+            return WebUtility.UrlEncode($"http://{_formSettings.APIUrl}/api/{resource}");
         }
     }
 }

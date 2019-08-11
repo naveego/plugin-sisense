@@ -2,6 +2,8 @@ namespace Plugin_Naveego_Legacy.DataContracts
 {
     public class FormSettings
     {
+        public string APIUrl { get; set; }
+        
         public string ServerName { get; set; }
         
         public string Username { get; set; }

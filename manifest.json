@@ -17,10 +17,11 @@
   "configSchema": {
     "ui": {
       "ui:order": [
-        "ServerName",
+        "APIUrl",
         "Username",
         "Password",
-        "ElastiCube"
+        "ElastiCube",
+        "ServerName"
       ],
       "Password": {
         "ui:widget": "password"
@@ -29,6 +30,11 @@
     "schema": {
       "type": "object",
       "properties": {
+        "APIUrl" : {
+          "type": "string",
+          "title": "API Url",
+          "description": "The base URL of the Sisense REST API"
+        },
         "ServerName" : {
           "type": "string",
           "title": "Server Name",
@@ -51,6 +57,7 @@
         }
       },
       "required": [
+        "APIUrl",
         "ServerName",
         "Username",
         "Password",
