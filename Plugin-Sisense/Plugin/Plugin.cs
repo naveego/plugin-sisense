@@ -332,7 +332,7 @@ namespace Plugin_Naveego_Legacy.Plugin
                 };
                 var formContent = new FormUrlEncodedContent(keyValues);
 
-                var authUrl = ToResourceUri("v1/authorization/login");
+                var authUrl = ToResourceUri("v1/authentication/login");
 
                 var resp = await _injectedClient.PostAsync(authUrl, formContent);
 
