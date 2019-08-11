@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>Plugin_Naveego_Legacy</RootNamespace>
+        <RootNamespace>Plugin_Sisense</RootNamespace>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
     </PropertyGroup>
 
