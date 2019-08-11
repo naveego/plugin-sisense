@@ -2,7 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
-        <RootNamespace>Plugin_Naveego_Legacy</RootNamespace>
+        <RootNamespace>Plugin_Sisense</RootNamespace>
 
         <IsPackable>false</IsPackable>
     </PropertyGroup>
@@ -18,7 +18,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Plugin-Naveego-Legacy\Plugin-Naveego-Legacy.csproj" />
+      <ProjectReference Include="..\Plugin-Sisense\Plugin-Sisense.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Helper" />
+      <Folder Include="Plugin" />
     </ItemGroup>
 
 </Project>

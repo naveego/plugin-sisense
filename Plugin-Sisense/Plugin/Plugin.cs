@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Mime;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
@@ -23,14 +24,11 @@ namespace Plugin_Naveego_Legacy.Plugin
 {
     public class Plugin : Publisher.PublisherBase
     {
-        private readonly string _authUri = "https://login.naveego.com";
-        private readonly string _apiUri = "https://useast-pod-01.naveegoapi.com";
         private readonly HttpClient _injectedClient;
         
         private string _authToken = null;
         private FormSettings _formSettings;
-        private string[] _convertNullToZero;
-  
+
         private TaskCompletionSource<bool> _tcs;
         
         public Plugin(HttpClient client = null)
@@ -49,10 +47,6 @@ namespace Plugin_Naveego_Legacy.Plugin
             try
             {
                 _formSettings = JsonConvert.DeserializeObject<FormSettings>(request.SettingsJson);
-
-                _convertNullToZero = (_formSettings.ConvertNullToZero == null)
-                    ? new string[0]
-                    : _formSettings.ConvertNullToZero.Split(',', StringSplitOptions.RemoveEmptyEntries);
             }
             catch (Exception e)
             {
@@ -81,12 +75,12 @@ namespace Plugin_Naveego_Legacy.Plugin
             // attempt to call the Legacy API api
             try
             {
-                var whoAmIUrl = $"{_apiUri}/v3/whoami";
+                var testUri = ToResourceUri("api/elasticubes/metadata");
 
 
-                var response = await _injectedClient.GetAsync(whoAmIUrl);
+                var response = await _injectedClient.GetAsync(testUri);
                 response.EnsureSuccessStatusCode();
-                Logger.Info("Connected to Naveego Legacy API");
+                Logger.Info("Connected to Sisense API");
             }
             catch (Exception e)
             {
@@ -152,42 +146,29 @@ namespace Plugin_Naveego_Legacy.Plugin
             // get to get a schema for each module found
             try
             {
-                var rulesUrl = $"{_apiUri}/v3/mdm/merging/rules";
-                var rulesResp = await _injectedClient.GetAsync(rulesUrl);
-                rulesResp.EnsureSuccessStatusCode();
+                var fieldsUri = ToResourceUri($"elasticubes/metadata/{_formSettings.ElastiCube}/fields");
+                var fieldsResp = await _injectedClient.GetAsync(fieldsUri);
+                fieldsResp.EnsureSuccessStatusCode();
 
-                dynamic rulesJson = JObject.Parse(await rulesResp.Content.ReadAsStringAsync());
+                JArray fields = JArray.Parse(await fieldsResp.Content.ReadAsStringAsync());
 
-                foreach (dynamic rule in rulesJson.data)
-                {
-                    var schema = new Schema
+                foreach (dynamic field in fields)
+                { 
+                    var schema = new Schema 
                     {
-                        Id = rule.@object,
-                        Name = rule.@object,
+                        Id = field.id,
+                        Name = field.id,
                         DataFlowDirection = Schema.Types.DataFlowDirection.Read
                     };
-                    
-                    // Add ID property
-                    schema.Properties.Add(new Property
+
+                   schema.Properties.Add(new Property
                     {
-                        Id = "ID",
-                        Name = "ID",
-                        Type = PropertyType.String,
-                        Description = "The global identifier",
-                        IsKey = true
+                        Id = field.id,
+                        Name = field.title,
+                        Type = GetPropertyType((string)field.dimtype)
                     });
 
-                    foreach (dynamic prop in rule.properties)
-                    {
-                        schema.Properties.Add(new Property
-                        {
-                            Id = prop.name,
-                            Name = prop.name,
-                            Type = GetPropertyType((string)prop.type)
-                        });
-                    }
-
-                    discoverSchemasResponse.Schemas.Add(schema);
+                   discoverSchemasResponse.Schemas.Add(schema);
                 }
             }
             catch (Exception e)
@@ -240,127 +221,45 @@ namespace Plugin_Naveego_Legacy.Plugin
             {
                 
                 // get additional metadata about properties for formatting
-                var metaUrl = $"{_apiUri}/v3/metadata/objects/{schema.Name}";
-                var metaResp = await _injectedClient.GetAsync(metaUrl);
-                LegacyMetadata metaJson = JsonConvert.DeserializeObject<LegacyMetadata>(await metaResp.Content.ReadAsStringAsync());
+                var jaqlUri = ToResourceUri($"elasticubes/{_formSettings.ElastiCube}/jaql");
+
+                var jaql = $@"{{ ""datasource"": ""{_formSettings.ElastiCube}"",
+                    ""metadata"": [
+                        {{
+                            ""dim"": ""{schema.Id}""
+                        }}
+                    ]
+                }}";
                 
-                var recordCount = 0;
-                var page = 1;
-                var pageSize = 100;
+                var prop = schema.Properties.First();
 
-                do
+                var dataPostContent = new StringContent(jaql, Encoding.UTF8, MediaTypeNames.Application.Json);
+                var dataResp = await _injectedClient.PostAsync(jaqlUri, dataPostContent);
+                dataResp.EnsureSuccessStatusCode();
+
+                dynamic dataJson = JObject.Parse(await dataResp.Content.ReadAsStringAsync());
+                JArray items = (JArray) dataJson.values;
+
+                foreach (dynamic item in items)
                 {
-                    var dataUrl = $"{_apiUri}/v3/data/objects/{schema.Name}?page={page}&pagesize={pageSize}";
-                    var dataResp = await _injectedClient.GetAsync(dataUrl);
-                    dataResp.EnsureSuccessStatusCode();
+                    var itemValues = (JArray) item;
 
-                    dynamic dataJson = JObject.Parse(await dataResp.Content.ReadAsStringAsync());
-                    int total = dataJson.meta.count;
-                    JArray items = (JArray) dataJson.data;
-                    
-                    foreach (dynamic item in items)
+                    foreach (dynamic iv in itemValues)
                     {
-                        var data = new Dictionary<string, object>();
-                        
-                        foreach (var prop in schema.Properties)
+                        var d = new Dictionary<string, object>
                         {
-
-                            var propMeta = metaJson.LegacyProperties.FirstOrDefault(p => p.Name == prop.Id);
-                            var scale = (propMeta != null) ? propMeta.Scale : 0;
-                            
-                            if (prop.Id == "ID")
-                            {
-                                data.Add(prop.Id, item._id.ToString());
-                                continue;
-                            }
-
-                            if (item.ContainsKey(prop.Id))
-                            {
-                                object value = item[prop.Id];
-                                if (value != null)
-                                {
-                                    switch (prop.Type)
-                                    {
-                                        case PropertyType.String:
-                                            // This is a number as s string as it has preceding zeros
-                                            if (value.ToString().StartsWith("0") && value.ToString().Length > 1)
-                                            {
-                                                value = value.ToString().Replace("\n", "\r\n");
-                                            }
-                                            else if (DateTime.TryParseExact(value.ToString(), "MM/dd/yyyy hh:mm:ss",
-                                                new CultureInfo("en-US"), DateTimeStyles.None, out var dr))
-                                            {
-                                                value = dr.ToString("yyyy-MM-ddTHH:mm:ss");
-                                            }
-                                            else if (decimal.TryParse(value.ToString(), out var d))
-                                            {
-                                                var suffix = (value.ToString().Contains("\n")) ? "\r\n" : "";
-                                                value = (!ConvertNullToZero(prop.Id) && d == 0.0M) ? null : PrepareDecimal(scale, d);
-
-                                                if (suffix != "")
-                                                {
-                                                    value = value.ToString() + suffix;
-                                                }
-                                            }
-                                            else
-                                            {
-                                                value = (value.ToString()).Replace("\n", "\r\n");
-                                            }
-                                            break;
-                                        case PropertyType.Datetime:
-                                            if (value is DateTime time)
-                                            {
-                                                value = time.ToString("yyyy-MM-ddTHH:mm:ss");
-                                            }
-                                            else if (DateTime.TryParse(value.ToString(), out var rd))
-                                            {
-                                                value = rd.ToString("yyyy-MM-ddTHH:mm:ss");
-                                            }
-                                            break;
-                                        case PropertyType.Float:
-                                        case PropertyType.Decimal:
-                                            value = (Convert.ToDecimal(value) == 0.0M) ? null : PrepareDecimal(scale, Convert.ToDecimal(value));
-                                            break;
-                                        case PropertyType.Integer:
-                                            value = (Convert.ToInt64(value) == 0) ? null : value;
-                                            break;
-                                    }
-
-                                    data.Add(prop.Id, value);
-                                    continue;
-                                }
-                            }
-
-                            data.Add(prop.Id, null);
-                        }
+                            { prop.Id, iv.data }
+                        };
 
                         var record = new Record
                         {
                             Action = Record.Types.Action.Upsert,
-                            DataJson = JsonConvert.SerializeObject(data)
+                            DataJson = JsonConvert.SerializeObject(d)
                         };
-
-                        if (limitFlag && recordCount == limit)
-                        {
-                            break;
-                        }
-
+                        
                         await responseStream.WriteAsync(record);
-                        recordCount++;
                     }
-                    
-                    if (limitFlag && recordCount == limit)
-                    {
-                        break;
-                    }
-
-                    if (recordCount == total || items.Count == 0)
-                    {
-                        break;
-                    }
-
-                    page++;
-                } while (true);
+                }
             }
             catch (Exception e)
             {
@@ -396,38 +295,14 @@ namespace Plugin_Naveego_Legacy.Plugin
                     return PropertyType.Text;
                 case "float":
                     return PropertyType.Float;
-                case "decimal":
+                case "decimal": 
+                case "numeric":
                     return PropertyType.Decimal;
                 default:
                     return PropertyType.String;
             }
         }
 
-        private string PrepareDecimal(int scale, decimal value)
-        {
-         
-            
-            var s = value.ToString();
-            var numOfZeros = scale;
-            
-            if (scale == 0)
-            {
-                return s;
-            }
-            
-            var idx = s.IndexOf('.');
-            if (idx <= 0)
-            {
-                s += ".";
-            }
-            else
-            {
-                numOfZeros = scale - (s.Length - (idx + 1));
-            }
-
-            return s + new string('0', numOfZeros);
-        }
-        
         /// <summary>
         /// Checks if a http response message is not empty and did not fail
         /// </summary>
@@ -436,11 +311,6 @@ namespace Plugin_Naveego_Legacy.Plugin
         private bool IsSuccessAndNotEmpty(HttpResponseMessage response)
         {
             return response.StatusCode != HttpStatusCode.NoContent && response.IsSuccessStatusCode;
-        }
-
-        private bool ConvertNullToZero(string fieldName)
-        {
-            return _convertNullToZero.Contains(fieldName, StringComparer.OrdinalIgnoreCase);
         }
 
         private async Task<bool> AuthorizeHttpClient()
@@ -457,15 +327,12 @@ namespace Plugin_Naveego_Legacy.Plugin
             {
                 var keyValues = new List<KeyValuePair<string, string>>
                 {
-                    new KeyValuePair<string, string>("grant_type", "password"),
                     new KeyValuePair<string, string>("username", _formSettings.Username),
-                    new KeyValuePair<string, string>("password", _formSettings.Password),
-                    new KeyValuePair<string, string>("client_id", _formSettings.OAuthClientId),
-                    new KeyValuePair<string, string>("client_secret", _formSettings.OAuthClientSecret)
+                    new KeyValuePair<string, string>("password", _formSettings.Password)
                 };
                 var formContent = new FormUrlEncodedContent(keyValues);
 
-                var authUrl = $"{_authUri}/oauth2/token";
+                var authUrl = ToResourceUri("v1/authorization/login");
 
                 var resp = await _injectedClient.PostAsync(authUrl, formContent);
 
@@ -486,6 +353,11 @@ namespace Plugin_Naveego_Legacy.Plugin
             }
 
             return false;
+        }
+
+        private string ToResourceUri(string resource)
+        {
+            return WebUtility.UrlEncode($"http://{_formSettings.ServerName}/api/{resource}");
         }
     }
 }

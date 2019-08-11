@@ -1,12 +1,12 @@
 {
-  "id": "plugin-naveego-legacy",
-  "displayName": "Naveego Legacy Publisher",
-  "description": "Publisher which pulls data from a Naveego's Legacy Golden Record service",
+  "id": "plugin-sisense",
+  "displayName": "Naveego Sisense Publisher",
+  "description": "Publisher which pulls data from a Sisense ElastiCube",
   "apiVersion": "2",
   "versionDescription": "Version 2",
-  "version": "1.0.22",
+  "version": "1.0.0",
   "iconFile": "icon.jpg",
-  "executable": "Plugin-Naveego-Legacy",
+  "executable": "Plugin-Sisense",
   "kind": "publisher",
   "os": "$GOOS",
   "arch": "$GOARCH",
@@ -14,38 +14,25 @@
   "canAcceptQueryBasedSchemas": false,
   "canUseOAuth": false,
   "canWrite": false,
-  "tenants": [
-    "pennenergy2",
-    "vandelay"
-  ],
   "configSchema": {
     "ui": {
       "ui:order": [
-        "OAuthClientId",
-        "OAuthClientSecret",
+        "ServerName",
         "Username",
         "Password",
-        "ConvertNullToZero"
+        "ElastiCube"
       ],
       "Password": {
-        "ui:widget": "password"
-      },
-      "OAuthClientSecret": {
         "ui:widget": "password"
       }
     },
     "schema": {
       "type": "object",
       "properties": {
-        "OAuthClientId" : {
+        "ServerName" : {
           "type": "string",
-          "title": "OAuthClientId",
-          "description": "The oauth client id to use for authentication"
-        },
-        "OAuthClientSecret": {
-          "type": "string",
-          "title": "OAuthClientSecret",
-          "description": "The oauth client secret to use for authentication"
+          "title": "Server Name",
+          "description": "The name of the Sisense server. (eg: LocalHost)"
         },
         "Username": {
           "type": "string",
@@ -57,17 +44,17 @@
           "title": "Password",
           "description": "The password to use for authentication"
         }, 
-        "ConvertNullToZero": {
+        "ElastiCube": {
           "type": "string",
-          "title": "Convert Nulls to 0",
-          "description": "Properties listed here will have null values converted to  Separate multiple with a comma."
+          "title": "ElastiCube",
+          "description": "The name of the Sisense ElastiCube to pull data from"
         }
       },
       "required": [
-        "OAuthClientId",
-        "OAuthClientSecret",
+        "ServerName",
         "Username",
-        "Password"
+        "Password",
+        "ElastiCube"
       ]
     }
   }
