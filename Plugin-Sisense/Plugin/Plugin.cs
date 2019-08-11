@@ -75,7 +75,7 @@ namespace Plugin_Naveego_Legacy.Plugin
             // attempt to call the Legacy API api
             try
             {
-                var testUri = ToResourceUri("api/elasticubes/metadata");
+                var testUri = ToResourceUri("elasticubes/metadata");
 
 
                 var response = await _injectedClient.GetAsync(testUri);
@@ -146,7 +146,7 @@ namespace Plugin_Naveego_Legacy.Plugin
             // get to get a schema for each module found
             try
             {
-                var fieldsUri = ToResourceUri($"elasticubes/metadata/{_formSettings.ElastiCube}/fields");
+                var fieldsUri = ToResourceUri($"elasticubes/metadata/{_formSettings.EncodedElasticCube}/fields");
                 var fieldsResp = await _injectedClient.GetAsync(fieldsUri);
                 fieldsResp.EnsureSuccessStatusCode();
 
@@ -221,7 +221,7 @@ namespace Plugin_Naveego_Legacy.Plugin
             {
                 
                 // get additional metadata about properties for formatting
-                var jaqlUri = ToResourceUri($"elasticubes/{_formSettings.ElastiCube}/jaql");
+                var jaqlUri = ToResourceUri($"elasticubes/{_formSettings.EncodedElasticCube}/jaql");
 
                 var jaql = $@"{{ ""datasource"": ""{_formSettings.ElastiCube}"",
                     ""metadata"": [
@@ -357,7 +357,7 @@ namespace Plugin_Naveego_Legacy.Plugin
 
         private string ToResourceUri(string resource)
         {
-            return WebUtility.UrlEncode($"http://{_formSettings.APIUrl}/api/{resource}");
+            return $"{_formSettings.APIUrl}/api/{resource}";
         }
     }
 }

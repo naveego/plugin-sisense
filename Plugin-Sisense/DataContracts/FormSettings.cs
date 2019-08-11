@@ -1,3 +1,5 @@
+using System.Net;
+
 namespace Plugin_Naveego_Legacy.DataContracts
 {
     public class FormSettings
@@ -11,5 +13,6 @@ namespace Plugin_Naveego_Legacy.DataContracts
         
         public string ElastiCube { get; set; }
 
+        public string EncodedElasticCube => WebUtility.UrlEncode(ElastiCube);
     }
 }
