@@ -1,58 +1,61 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
-using System.Runtime.CompilerServices;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Linq;
-using Google.Protobuf.Collections;
 using Grpc.Core;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Plugin_Naveego_Legacy.DataContracts;
-using Plugin_Naveego_Legacy.Helper;
+using Plugin_Sisense.API.Discover;
+using Plugin_Sisense.API.Replication;
+using Plugin_Sisense.DataContracts;
+using Plugin_Sisense.Helper;
 using Pub;
 
-namespace Plugin_Naveego_Legacy.Plugin
+namespace Plugin_Sisense.Plugin
 {
     public class Plugin : Publisher.PublisherBase
     {
+        private RequestHelper _client;
         private readonly HttpClient _injectedClient;
-        
-        private string _authToken = null;
-        private FormSettings _formSettings;
-
+        private readonly ServerStatus _server;
         private TaskCompletionSource<bool> _tcs;
-        
+
         public Plugin(HttpClient client = null)
         {
             _injectedClient = client != null ? client : new HttpClient();
+            _server = new ServerStatus
+            {
+                Connected = false,
+                WriteConfigured = false
+            };
         }
 
         /// <summary>
-        /// Establishes a connection with Naveego Legacy CRM. Creates an authenticated http client and tests it.
+        /// Establishes a connection with Sisense API. Creates an authenticated http client and tests it.
         /// </summary>
         /// <param name="request"></param>
         /// <param name="context"></param>
         /// <returns>A message indicating connection success</returns>
         public override async Task<ConnectResponse> Connect(ConnectRequest request, ServerCallContext context)
         {
+            // validate settings passed in
             try
             {
-                _formSettings = JsonConvert.DeserializeObject<FormSettings>(request.SettingsJson);
+                _server.Settings = JsonConvert.DeserializeObject<Settings>(request.SettingsJson);
+                _server.Settings.Validate();
             }
             catch (Exception e)
             {
                 Logger.Error(e.Message);
                 return new ConnectResponse
                 {
+                    OauthStateJson = request.OauthStateJson,
                     ConnectionError = "",
                     OauthError = "",
                     SettingsError = e.Message
@@ -60,26 +63,23 @@ namespace Plugin_Naveego_Legacy.Plugin
             }
 
             // create new authenticated request helper with validated settings
-            var authSuccess = await AuthorizeHttpClient();
-
-            if (!authSuccess)
+            try
             {
-                return new ConnectResponse
-                {
-                    ConnectionError = "Could not authenticate to API",
-                    OauthError = "",
-                    SettingsError = ""
-                };
+                _client = new RequestHelper(_server.Settings, _injectedClient);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+                throw;
             }
 
             // attempt to call the Legacy API api
             try
             {
-                var testUri = ToResourceUri("elasticubes/metadata");
-
-
-                var response = await _injectedClient.GetAsync(testUri);
+                var response = await _client.GetAsync("connection");
                 response.EnsureSuccessStatusCode();
+
+                _server.Connected = true;
                 Logger.Info("Connected to Sisense API");
             }
             catch (Exception e)
@@ -135,70 +135,42 @@ namespace Plugin_Naveego_Legacy.Plugin
         {
             Logger.Info("Discovering Schemas...");
 
+            // get a schema for each module found
             DiscoverSchemasResponse discoverSchemasResponse = new DiscoverSchemasResponse();
-
-            var isAuthed = await AuthorizeHttpClient();
-            if (!isAuthed)
-            {
-                return discoverSchemasResponse;
-            }
-
-            // get to get a schema for each module found
-            try
-            {
-                var fieldsUri = ToResourceUri($"elasticubes/metadata/{_formSettings.EncodedElasticCube}/fields");
-                var fieldsResp = await _injectedClient.GetAsync(fieldsUri);
-                fieldsResp.EnsureSuccessStatusCode();
-
-                JArray fields = JArray.Parse(await fieldsResp.Content.ReadAsStringAsync());
-
-                foreach (dynamic field in fields)
-                { 
-                    var schema = new Schema 
-                    {
-                        Id = field.id,
-                        Name = field.id,
-                        DataFlowDirection = Schema.Types.DataFlowDirection.Read
-                    };
-
-                   schema.Properties.Add(new Property
-                    {
-                        Id = field.id,
-                        Name = field.title,
-                        Type = GetPropertyType((string)field.dimtype)
-                    });
-
-                   discoverSchemasResponse.Schemas.Add(schema);
-                }
-            }
-            catch (Exception e)
-            {
-                Logger.Error(e.Message);
-                throw;
-            }
-
-            Logger.Info($"Schemas found: {discoverSchemasResponse.Schemas.Count}");
-
-            // only return requested schemas if refresh mode selected
-            if (request.Mode == DiscoverSchemasRequest.Types.Mode.Refresh)
-            {
-                var refreshSchemaIds = request.ToRefresh.Select(x => x.Id);
-                var schemas =
-                    JsonConvert.DeserializeObject<Schema[]>(
-                        JsonConvert.SerializeObject(discoverSchemasResponse.Schemas));
-                discoverSchemasResponse.Schemas.Clear();
-                discoverSchemasResponse.Schemas.AddRange(schemas.Where(x => refreshSchemaIds.Contains(x.Id)));
-                
-
-                Logger.Debug($"Schemas found: {JsonConvert.SerializeObject(schemas)}");
-                Logger.Debug($"Refresh requested on schemas: {refreshSchemaIds}");
-
-                Logger.Info($"Schemas returned: {discoverSchemasResponse.Schemas.Count}");
-                return discoverSchemasResponse;
-            }
-
-            // return all schemas otherwise
-            Logger.Info($"Schemas returned: {discoverSchemasResponse.Schemas.Count}");
+//            try
+//            {
+//                var schemas = await Discover.GetAllReadSchemas(_client, _server.Settings);
+//                
+//                discoverSchemasResponse.Schemas.AddRange(schemas);
+//            }
+//            catch (Exception e)
+//            {
+//                Logger.Error(e.Message);
+//                throw;
+//            }
+//
+//            Logger.Info($"Schemas found: {discoverSchemasResponse.Schemas.Count}");
+//
+//            // only return requested schemas if refresh mode selected
+//            if (request.Mode == DiscoverSchemasRequest.Types.Mode.Refresh)
+//            {
+//                var refreshSchemaIds = request.ToRefresh.Select(x => x.Id);
+//                var schemas =
+//                    JsonConvert.DeserializeObject<Schema[]>(
+//                        JsonConvert.SerializeObject(discoverSchemasResponse.Schemas));
+//                discoverSchemasResponse.Schemas.Clear();
+//                discoverSchemasResponse.Schemas.AddRange(schemas.Where(x => refreshSchemaIds.Contains(x.Id)));
+//                
+//
+//                Logger.Debug($"Schemas found: {JsonConvert.SerializeObject(schemas)}");
+//                Logger.Debug($"Refresh requested on schemas: {refreshSchemaIds}");
+//
+//                Logger.Info($"Schemas returned: {discoverSchemasResponse.Schemas.Count}");
+//                return discoverSchemasResponse;
+//            }
+//
+//            // return all schemas otherwise
+//            Logger.Info($"Schemas returned: {discoverSchemasResponse.Schemas.Count}");
             return discoverSchemasResponse;
         }
 
@@ -212,54 +184,162 @@ namespace Plugin_Naveego_Legacy.Plugin
         public override async Task ReadStream(ReadRequest request, IServerStreamWriter<Record> responseStream,
             ServerCallContext context)
         {
-            var schema = request.Schema;
-            var limit = request.Limit;
-            var limitFlag = request.Limit != 0;
+            //Read.GetAllRecords()
+        }
+
+        /// <summary>
+        /// Configures replication writebacks to Sisense
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override Task<ConfigureReplicationResponse> ConfigureReplication(ConfigureReplicationRequest request,
+            ServerCallContext context)
+        {
+            Logger.Info("Configuring write...");
+
+            var schemaJson = Replication.GetSchemaJson();
+            var uiJson = Replication.GetUIJson();
             
-            // get to get a schema for each module found
+            // if first call 
+//            if (request.Form == null || request.Form.DataJson == "")
+//            {
+//                return Task.FromResult(new ConfigureReplicationResponse
+//                {
+//                    Form = new ConfigurationFormResponse
+//                    {
+//                        DataJson = "",
+//                        DataErrorsJson = "",
+//                        Errors = { },
+//                        SchemaJson = schemaJson,
+//                        UiJson = uiJson,
+//                        StateJson = ""
+//                    }
+//                });
+//            }
+
             try
             {
-                
-                // get additional metadata about properties for formatting
-                var jaqlUri = ToResourceUri($"elasticubes/{_formSettings.EncodedElasticCube}/jaql");
-
-                var jaql = $@"{{ ""datasource"": ""{_formSettings.ElastiCube}"",
-                    ""metadata"": [
-                        {{
-                            ""dim"": ""{schema.Id}""
-                        }}
-                    ]
-                }}";
-                
-                var prop = schema.Properties.First();
-
-                var dataPostContent = new StringContent(jaql, Encoding.UTF8, MediaTypeNames.Application.Json);
-                var dataResp = await _injectedClient.PostAsync(jaqlUri, dataPostContent);
-                dataResp.EnsureSuccessStatusCode();
-
-                dynamic dataJson = JObject.Parse(await dataResp.Content.ReadAsStringAsync());
-                JArray items = (JArray) dataJson.values;
-
-                foreach (dynamic item in items)
+                return Task.FromResult(new ConfigureReplicationResponse
                 {
-                    var itemValues = (JArray) item;
-
-                    foreach (dynamic iv in itemValues)
+                    Form = new ConfigurationFormResponse
                     {
-                        var d = new Dictionary<string, object>
-                        {
-                            { prop.Id, iv.data }
-                        };
+                        DataJson = request.Form.DataJson,
+                        Errors = { },
+                        SchemaJson = schemaJson,
+                        UiJson = uiJson,
+                        StateJson = request.Form.StateJson
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+                return Task.FromResult(new ConfigureReplicationResponse
+                {
+                    Form = new ConfigurationFormResponse
+                    {
+                        DataJson = request.Form.DataJson,
+                        Errors = { e.Message },
+                        SchemaJson = schemaJson,
+                        UiJson = uiJson,
+                        StateJson = request.Form.StateJson
+                    }
+                });
+            }
+        }
 
-                        var record = new Record
+        /// <summary>
+        /// Prepares writeback settings to write to Sisense
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override Task<PrepareWriteResponse> PrepareWrite(PrepareWriteRequest request, ServerCallContext context)
+        {
+            Logger.Info("Preparing write...");
+            _server.WriteConfigured = false;
+
+            var writeSettings = new WriteSettings
+            {
+                CommitSLA = request.CommitSlaSeconds,
+                Schema = request.Schema,
+                Replication = request.Replication
+            };
+            
+            _server.WriteSettings = writeSettings;
+            _server.WriteConfigured = true;
+
+            Logger.Info("Write prepared.");
+            return Task.FromResult(new PrepareWriteResponse());
+        }
+
+        /// <summary>
+        /// Writes records to Sisense
+        /// </summary>
+        /// <param name="requestStream"></param>
+        /// <param name="responseStream"></param>
+        /// <param name="context"></param>
+        /// <returns></returns>
+        public override async Task WriteStream(IAsyncStreamReader<Record> requestStream,
+            IServerStreamWriter<RecordAck> responseStream, ServerCallContext context)
+        {
+            try
+            {
+                Logger.Info("Writing records to Sisense...");
+
+                var schema = _server.WriteSettings.Schema;
+                var sla = _server.WriteSettings.CommitSLA;
+                var inCount = 0;
+                var outCount = 0;
+
+                // get next record to publish while connected and configured
+                while (await requestStream.MoveNext(context.CancellationToken) && _server.Connected &&
+                       _server.WriteConfigured)
+                {
+                    var record = requestStream.Current;
+                    inCount++;
+
+                    Logger.Debug($"Got record: {record.DataJson}");
+
+                    if (_server.WriteSettings.IsReplication())
+                    {
+                        // send record to source system
+                        // timeout if it takes longer than the sla
+                        var task = Task.Run(() => Replication.WriteRecord(record));
+                        if (task.Wait(TimeSpan.FromSeconds(sla)))
                         {
-                            Action = Record.Types.Action.Upsert,
-                            DataJson = JsonConvert.SerializeObject(d)
-                        };
-                        
-                        await responseStream.WriteAsync(record);
+                            // send ack
+                            var ack = new RecordAck
+                            {
+                                CorrelationId = record.CorrelationId,
+                                Error = task.Result
+                            };
+                            await responseStream.WriteAsync(ack);
+
+                            if (String.IsNullOrEmpty(task.Result))
+                            {
+                                outCount++;
+                            }
+                        }
+                        else
+                        {
+                            // send timeout ack
+                            var ack = new RecordAck
+                            {
+                                CorrelationId = record.CorrelationId,
+                                Error = "timed out"
+                            };
+                            await responseStream.WriteAsync(ack);
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception("Only replication writebacks are supported");
                     }
                 }
+
+                Logger.Info($"Wrote {outCount} of {inCount} records to Sisense.");
             }
             catch (Exception e)
             {
@@ -268,96 +348,27 @@ namespace Plugin_Naveego_Legacy.Plugin
             }
         }
 
-        
         /// <summary>
-        /// Gets the Naveego type from the provided Zoho information
+        /// Handles disconnect requests from the agent
         /// </summary>
-        /// <param name="field"></param>
-        /// <returns>The property type</returns>
-        private PropertyType GetPropertyType(string type)
-        {
-            switch (type)
-            {
-                case "boolean":
-                    return PropertyType.Bool;
-                case "double":
-                    return PropertyType.Float;
-                case "number":
-                case "integer":
-                    return PropertyType.Integer;
-                case "jsonarray":
-                case "jsonobject":
-                    return PropertyType.Json;
-                case "date":
-                case "datetime":
-                    return PropertyType.Datetime;
-                case "time":
-                    return PropertyType.Text;
-                case "float":
-                    return PropertyType.Float;
-                case "decimal": 
-                case "numeric":
-                    return PropertyType.Decimal;
-                default:
-                    return PropertyType.String;
-            }
-        }
-
-        /// <summary>
-        /// Checks if a http response message is not empty and did not fail
-        /// </summary>
-        /// <param name="response"></param>
+        /// <param name="request"></param>
+        /// <param name="context"></param>
         /// <returns></returns>
-        private bool IsSuccessAndNotEmpty(HttpResponseMessage response)
+        public override Task<DisconnectResponse> Disconnect(DisconnectRequest request, ServerCallContext context)
         {
-            return response.StatusCode != HttpStatusCode.NoContent && response.IsSuccessStatusCode;
-        }
+            // clear connection
+            _server.Connected = false;
+            _server.Settings = null;
 
-        private async Task<bool> AuthorizeHttpClient()
-        {
-            if (_authToken != null)
+            // alert connection session to close
+            if (_tcs != null)
             {
-                _injectedClient.DefaultRequestHeaders.Authorization =
-                    new AuthenticationHeaderValue("Bearer", _authToken);
-
-                return true;
-            }
-            
-            try
-            {
-                var keyValues = new List<KeyValuePair<string, string>>
-                {
-                    new KeyValuePair<string, string>("username", _formSettings.Username),
-                    new KeyValuePair<string, string>("password", _formSettings.Password)
-                };
-                var formContent = new FormUrlEncodedContent(keyValues);
-
-                var authUrl = ToResourceUri("v1/authentication/login");
-
-                var resp = await _injectedClient.PostAsync(authUrl, formContent);
-
-                if (resp.IsSuccessStatusCode)
-                {
-                    var respJson = JObject.Parse(await resp.Content.ReadAsStringAsync());
-                    _authToken = (string) respJson["access_token"];
-
-                    _injectedClient.DefaultRequestHeaders.Authorization =
-                        new AuthenticationHeaderValue("Bearer", _authToken);
-                    
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-               Logger.Error($"Could not authenticate plugin: ${e.Message}");
+                _tcs.SetResult(true);
+                _tcs = null;
             }
 
-            return false;
-        }
-
-        private string ToResourceUri(string resource)
-        {
-            return $"{_formSettings.APIUrl}/api/{resource}";
+            Logger.Info("Disconnected");
+            return Task.FromResult(new DisconnectResponse());
         }
     }
 }

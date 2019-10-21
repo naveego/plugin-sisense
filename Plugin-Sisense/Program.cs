@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Grpc.Core;
-using Plugin_Naveego_Legacy.Helper;
+using Plugin_Sisense.Helper;
 using Pub;
 
-namespace Plugin_Naveego_Legacy
+namespace Plugin_Sisense
 {
     class Program
     {

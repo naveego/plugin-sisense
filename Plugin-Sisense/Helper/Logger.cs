@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Threading;
 
-namespace Plugin_Naveego_Legacy.Helper
+namespace Plugin_Sisense.Helper
 {
     public static class Logger
     {
@@ -15,7 +15,7 @@ namespace Plugin_Naveego_Legacy.Helper
             Off
         }
         
-        private static string _path = @"plugin-naveego-legacy-log.txt";
+        private static string _path = @"plugin-sisense-log.txt";
         private static LogLevel _level = LogLevel.Info;
         private static ReaderWriterLockSlim _readWriteLock = new ReaderWriterLockSlim();
         

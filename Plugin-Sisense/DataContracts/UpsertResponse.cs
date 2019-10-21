@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace Plugin_Naveego_Legacy.DataContracts
+namespace Plugin_Sisense.DataContracts
 {
     public class UpsertResponse
     {

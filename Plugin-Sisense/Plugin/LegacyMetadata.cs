@@ -1,7 +1,6 @@
 using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
 
-namespace Plugin_Naveego_Legacy.Plugin
+namespace Plugin_Sisense.Plugin
 {
     public class LegacyMetadata
     {
