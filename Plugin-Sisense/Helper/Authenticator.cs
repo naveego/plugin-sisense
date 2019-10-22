@@ -38,7 +38,7 @@ namespace Plugin_Sisense.Helper
                     };
                     var formContent = new FormUrlEncodedContent(keyValues);
 
-                    var authUrl = _settings.ToResourceUri("v1/authentication/login");
+                    var authUrl = _settings.ToResourceUri("authentication/login");
 
                     var response = await _client.PostAsync(authUrl, formContent);
                     response.EnsureSuccessStatusCode();

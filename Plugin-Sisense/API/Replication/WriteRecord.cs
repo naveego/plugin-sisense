@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using LiteDB;
 using Newtonsoft.Json;
 using Plugin_Sisense.DataContracts;
@@ -14,17 +15,50 @@ namespace Plugin_Sisense.API.Replication
         {
             try
             {
-                using (var db = new LiteDatabase(@"SisenseReplication.db"))
+                var path = "localdb";
+                Directory.CreateDirectory(path);
+                
+                using (var db = new LiteDatabase($"{path}/SisenseGoldenRecordReplication.db"))
                 {
-                    var records = db.GetCollection<ReplicationRecord>("records");
+                    var goldenRecords = db.GetCollection<ReplicationRecord>("records");
 
-                    var replicationRecord = new ReplicationRecord
+                    if (record.Action == Record.Types.Action.Delete)
                     {
-                        Id = record.RecordId,
-                        Data = JsonConvert.DeserializeObject<Dictionary<string, object>>(record.DataJson)
-                    };
+                        goldenRecords.Delete(record.RecordId);
+                    }
+                    else
+                    {
+                        var replicationRecord = new ReplicationRecord
+                        {
+                            Id = record.RecordId,
+                            Data = JsonConvert.DeserializeObject<Dictionary<string, object>>(record.DataJson)
+                        };
 
-                    records.Upsert(replicationRecord);
+                        goldenRecords.Upsert(replicationRecord);
+                    }
+                }
+                
+                using (var db = new LiteDatabase($"{path}/SisenseVersionReplication.db"))
+                {
+                    var versions = db.GetCollection<ReplicationRecord>("records");
+                    
+                    foreach (var version in record.Versions)
+                    {
+                        if (record.Action == Record.Types.Action.Delete)
+                        {
+                            versions.Delete(version.RecordId);
+                        }
+                        else
+                        {
+                            var versionRecord = new ReplicationRecord
+                            {
+                                Id = version.RecordId,
+                                Data = JsonConvert.DeserializeObject<Dictionary<string, object>>(version.DataJson)
+                            };
+
+                            versions.Upsert(versionRecord);
+                        }
+                    }
                 }
 
                 return "";

@@ -26,7 +26,7 @@ namespace Plugin_Sisense.Plugin
 
             Server server = new Server
             {
-                Services = {Publisher.BindService(new Plugin_Naveego_Legacy.Plugin.Plugin())},
+                Services = {Publisher.BindService(new Plugin())},
                 Ports = {new ServerPort("localhost", 0, ServerCredentials.Insecure)}
             };
             server.Start();
@@ -55,7 +55,7 @@ namespace Plugin_Sisense.Plugin
             // setup
             Server server = new Server
             {
-                Services = {Publisher.BindService(new Plugin_Naveego_Legacy.Plugin.Plugin())},
+                Services = {Publisher.BindService(new Plugin())},
                 Ports = {new ServerPort("localhost", 0, ServerCredentials.Insecure)}
             };
             server.Start();
@@ -92,7 +92,7 @@ namespace Plugin_Sisense.Plugin
 
             Server server = new Server
             {
-                Services = {Publisher.BindService(new Plugin_Naveego_Legacy.Plugin.Plugin())},
+                Services = {Publisher.BindService(new Plugin())},
                 Ports = {new ServerPort("localhost", 0, ServerCredentials.Insecure)}
             };
             server.Start();

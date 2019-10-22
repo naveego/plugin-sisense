@@ -9,10 +9,6 @@ namespace Plugin_Sisense.API.Replication
         {
             var uiJsonObj = new Dictionary<string, object>
             {
-                {"ui:order", new []
-                {
-                    "FolderPath"
-                }}
             };
             
             return JsonConvert.SerializeObject(uiJsonObj);

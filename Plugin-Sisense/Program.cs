@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using Grpc.Core;
+using Microsoft.Extensions.DependencyInjection;
 using Plugin_Sisense.Helper;
 using Pub;
 
 namespace Plugin_Sisense
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
@@ -22,7 +25,7 @@ namespace Plugin_Sisense
                 Logger.Clean();
             
                 // create new server and start it
-                Server server = new Server
+                var server = new Grpc.Core.Server
                 {
                     Services = { Publisher.BindService(new Plugin.Plugin()) },
                     Ports = { new ServerPort("localhost", 0, ServerCredentials.Insecure) }
@@ -37,8 +40,8 @@ namespace Plugin_Sisense
             
                 Logger.Info("Started on port " + server.Ports.First().BoundPort);
                 
-                // wait to exit until given input
-                Console.ReadLine();
+                // wait to exit until closed
+                CreateWebHostBuilder(args).Build().Run();
                 
                 Logger.Info("Plugin exiting...");
 
@@ -50,5 +53,9 @@ namespace Plugin_Sisense
                 Logger.Error(e.Message);
             }
         }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>();
     }
 }

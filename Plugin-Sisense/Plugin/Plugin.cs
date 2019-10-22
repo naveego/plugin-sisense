@@ -200,23 +200,6 @@ namespace Plugin_Sisense.Plugin
 
             var schemaJson = Replication.GetSchemaJson();
             var uiJson = Replication.GetUIJson();
-            
-            // if first call 
-//            if (request.Form == null || request.Form.DataJson == "")
-//            {
-//                return Task.FromResult(new ConfigureReplicationResponse
-//                {
-//                    Form = new ConfigurationFormResponse
-//                    {
-//                        DataJson = "",
-//                        DataErrorsJson = "",
-//                        Errors = { },
-//                        SchemaJson = schemaJson,
-//                        UiJson = uiJson,
-//                        StateJson = ""
-//                    }
-//                });
-//            }
 
             try
             {
