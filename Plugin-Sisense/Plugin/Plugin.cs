@@ -1,17 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Mime;
-using System.Text;
 using System.Threading.Tasks;
 using Grpc.Core;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Plugin_Naveego_Legacy.DataContracts;
-using Plugin_Sisense.API.Discover;
 using Plugin_Sisense.API.Replication;
 using Plugin_Sisense.DataContracts;
 using Plugin_Sisense.Helper;
@@ -270,6 +262,7 @@ namespace Plugin_Sisense.Plugin
             try
             {
                 Logger.Info("Writing records to Sisense...");
+                Logger.Info($"API Route: {GetBindingHostedService.ServerAddresses.Addresses.FirstOrDefault()}");
 
                 var schema = _server.WriteSettings.Schema;
                 var sla = _server.WriteSettings.CommitSLA;
@@ -287,9 +280,11 @@ namespace Plugin_Sisense.Plugin
 
                     if (_server.WriteSettings.IsReplication())
                     {
+                        var config = JsonConvert.DeserializeObject<ConfigureReplicationFormData>(_server.WriteSettings.Replication.SettingsJson);
+                        
                         // send record to source system
                         // timeout if it takes longer than the sla
-                        var task = Task.Run(() => Replication.WriteRecord(record));
+                        var task = Task.Run(() => Replication.WriteRecord(record, config));
                         if (task.Wait(TimeSpan.FromSeconds(sla)))
                         {
                             // send ack

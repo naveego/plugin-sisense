@@ -3,10 +3,13 @@ using LiteDB;
 
 namespace Plugin_Sisense.DataContracts
 {
-    public class ReplicationRecord
+    public class ReplicationVersionRecord
     {
         [BsonId]
-        public string Id { get; set; }
+        public string VersionRecordId { get; set; }
+        
+        [BsonField]
+        public string GoldenRecordId { get; set; }
         
         [BsonField]
         public Dictionary<string, object> Data { get; set; }

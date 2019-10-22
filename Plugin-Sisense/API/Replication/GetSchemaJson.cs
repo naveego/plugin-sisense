@@ -9,6 +9,20 @@ namespace Plugin_Sisense.API.Replication
         {
             var schemaJsonObj = new Dictionary<string, object>
             {
+                {"type", "object"},
+                {"properties", new Dictionary<string, object>
+                {
+                    {"ShapeName", new Dictionary<string, string>
+                    {
+                        {"type", "string"},
+                        {"title", "Shape Name"},
+                        {"description", "Name for your data source in Sisense"},
+                    }},
+                }},
+                {"required", new []
+                {
+                    "ShapeName"
+                }}
             };
 
             return JsonConvert.SerializeObject(schemaJsonObj);

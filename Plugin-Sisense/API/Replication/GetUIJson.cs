@@ -9,8 +9,12 @@ namespace Plugin_Sisense.API.Replication
         {
             var uiJsonObj = new Dictionary<string, object>
             {
+                {"ui:order", new []
+                {
+                    "ShapeName"
+                }}
             };
-            
+
             return JsonConvert.SerializeObject(uiJsonObj);
         }
     }

@@ -12,17 +12,25 @@
         <PackageReference Include="Grpc" Version="2.24.0" />
         <PackageReference Include="Grpc.HealthCheck" Version="2.24.0" />
         <PackageReference Include="Grpc.Tools" Version="2.24.0" />
+        <PackageReference Include="Humanizer.Core" Version="2.7.9" />
+        <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
         <PackageReference Include="LiteDB" Version="4.1.4" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.3.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+        <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="API" />
-      <Folder Include="DataContracts" />
-      <Folder Include="Helper" />
-      <Folder Include="Plugin" />
       <Folder Include="Publisher" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Icon Include="$(MSBuildProjectDirectory)/../icon.jpg" />
+        <License Include="$(MSBuildProjectDirectory)/../LICENSE" />
+        <Manifest Include="$(MSBuildProjectDirectory)/../manifest.json" />
     </ItemGroup>
 
     <Target Name="ZipWindows" AfterTargets="Publish" Condition="$(Configuration) == 'Release' And Exists('$(MSBuildProjectDirectory)\bin\Release\netcoreapp2.2\win-x64\publish')">
