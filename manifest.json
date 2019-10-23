@@ -14,14 +14,14 @@
   "canAcceptQueryBasedSchemas": false,
   "canUseOAuth": false,
   "canWrite": false,
+  "canConfigureReplication": true,
+  "canWriteReplication": true,
   "configSchema": {
     "ui": {
       "ui:order": [
-        "APIUrl",
+        "Hostname",
         "Username",
-        "Password",
-        "ElastiCube",
-        "ServerName"
+        "Password"
       ],
       "Password": {
         "ui:widget": "password"
@@ -30,15 +30,10 @@
     "schema": {
       "type": "object",
       "properties": {
-        "APIUrl" : {
+        "Hostname" : {
           "type": "string",
-          "title": "API Url",
-          "description": "The base URL of the Sisense REST API"
-        },
-        "ServerName" : {
-          "type": "string",
-          "title": "Server Name",
-          "description": "The name of the Sisense server. (eg: LocalHost)"
+          "title": "Hostname",
+          "description": "The hostname of the Sisense server ex. localhost:8081"
         },
         "Username": {
           "type": "string",
@@ -49,19 +44,12 @@
           "type": "string",
           "title": "Password",
           "description": "The password to use for authentication"
-        }, 
-        "ElastiCube": {
-          "type": "string",
-          "title": "ElastiCube",
-          "description": "The name of the Sisense ElastiCube to pull data from"
         }
       },
       "required": [
-        "APIUrl",
-        "ServerName",
+        "Hostname",
         "Username",
-        "Password",
-        "ElastiCube"
+        "Password"
       ]
     }
   }

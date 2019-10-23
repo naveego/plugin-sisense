@@ -18,6 +18,7 @@ namespace Pub {
     static readonly grpc::Marshaller<global::Pub.ConnectResponse> __Marshaller_pub_ConnectResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ConnectResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.DiscoverSchemasRequest> __Marshaller_pub_DiscoverSchemasRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.DiscoverSchemasRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.DiscoverSchemasResponse> __Marshaller_pub_DiscoverSchemasResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.DiscoverSchemasResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Pub.Schema> __Marshaller_pub_Schema = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.Schema.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.ReadRequest> __Marshaller_pub_ReadRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ReadRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.Record> __Marshaller_pub_Record = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.Record.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.DisconnectRequest> __Marshaller_pub_DisconnectRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.DisconnectRequest.Parser.ParseFrom);
@@ -34,6 +35,8 @@ namespace Pub {
     static readonly grpc::Marshaller<global::Pub.CompleteOAuthFlowResponse> __Marshaller_pub_CompleteOAuthFlowResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.CompleteOAuthFlowResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.ConfigureWriteRequest> __Marshaller_pub_ConfigureWriteRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ConfigureWriteRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.ConfigureWriteResponse> __Marshaller_pub_ConfigureWriteResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ConfigureWriteResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Pub.ConfigureReplicationRequest> __Marshaller_pub_ConfigureReplicationRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ConfigureReplicationRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::Pub.ConfigureReplicationResponse> __Marshaller_pub_ConfigureReplicationResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.ConfigureReplicationResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.PrepareWriteRequest> __Marshaller_pub_PrepareWriteRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.PrepareWriteRequest.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.PrepareWriteResponse> __Marshaller_pub_PrepareWriteResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.PrepareWriteResponse.Parser.ParseFrom);
     static readonly grpc::Marshaller<global::Pub.RecordAck> __Marshaller_pub_RecordAck = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::Pub.RecordAck.Parser.ParseFrom);
@@ -72,6 +75,13 @@ namespace Pub {
         "DiscoverSchemas",
         __Marshaller_pub_DiscoverSchemasRequest,
         __Marshaller_pub_DiscoverSchemasResponse);
+
+    static readonly grpc::Method<global::Pub.DiscoverSchemasRequest, global::Pub.Schema> __Method_DiscoverSchemasStream = new grpc::Method<global::Pub.DiscoverSchemasRequest, global::Pub.Schema>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "DiscoverSchemasStream",
+        __Marshaller_pub_DiscoverSchemasRequest,
+        __Marshaller_pub_Schema);
 
     static readonly grpc::Method<global::Pub.ReadRequest, global::Pub.Record> __Method_PublishStream = new grpc::Method<global::Pub.ReadRequest, global::Pub.Record>(
         grpc::MethodType.ServerStreaming,
@@ -136,6 +146,13 @@ namespace Pub {
         __Marshaller_pub_ConfigureWriteRequest,
         __Marshaller_pub_ConfigureWriteResponse);
 
+    static readonly grpc::Method<global::Pub.ConfigureReplicationRequest, global::Pub.ConfigureReplicationResponse> __Method_ConfigureReplication = new grpc::Method<global::Pub.ConfigureReplicationRequest, global::Pub.ConfigureReplicationResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ConfigureReplication",
+        __Marshaller_pub_ConfigureReplicationRequest,
+        __Marshaller_pub_ConfigureReplicationResponse);
+
     static readonly grpc::Method<global::Pub.PrepareWriteRequest, global::Pub.PrepareWriteResponse> __Method_PrepareWrite = new grpc::Method<global::Pub.PrepareWriteRequest, global::Pub.PrepareWriteResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
@@ -186,7 +203,8 @@ namespace Pub {
       /// and maintain a session where any change in the connection state
       /// or updates to OAuth information are streamed back to the host.
       /// The plugin should maintain this connection until Disconnect is called.
-      /// This must be implemented if the plugin manifest has `canUseOAuth` set to true.
+      /// This must be implemented if the plugin manifest has `canUseOAuth` set to
+      /// true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -198,7 +216,11 @@ namespace Pub {
       }
 
       /// <summary>
-      /// (DEPRECATED) Requests a listing of schemas this publisher can provide records for.
+      /// DiscoverShapes requests a listing of schemas this publisher can provide
+      /// records for.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -210,6 +232,11 @@ namespace Pub {
 
       /// <summary>
       /// Requests a listing of schemas this publisher can provide records for.
+      /// New plugins should implement DiscoverSchemaStream and stream discovered
+      /// schemes to the caller.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -220,7 +247,24 @@ namespace Pub {
       }
 
       /// <summary>
-      /// (DEPRECATED) PublishStream begins streaming records to the client from the plugin.
+      /// Requests a stream of schemas this publisher can provide records for.
+      ///
+      /// API Version: 3
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="responseStream">Used for sending responses back to the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>A task indicating completion of the handler.</returns>
+      public virtual global::System.Threading.Tasks.Task DiscoverSchemasStream(global::Pub.DiscoverSchemasRequest request, grpc::IServerStreamWriter<global::Pub.Schema> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// PublishStream begins streaming records to the client from the plugin.
+      /// Implement ReadStream instead.
+      ///
+      /// Deprecated: Deprecated in API Version 2. Implement ReadStream instead.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -233,6 +277,7 @@ namespace Pub {
 
       /// <summary>
       /// ReadStream begins streaming records to the client from the plugin.
+      /// API Version: 2
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -244,8 +289,8 @@ namespace Pub {
       }
 
       /// <summary>
-      /// Tells the plugin to disconnect from its data source, stop any running publishes,
-      /// and gracefully prepare to be shut down.
+      /// Tells the plugin to disconnect from its data source, stop any running
+      /// publishes, and gracefully prepare to be shut down.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -257,8 +302,9 @@ namespace Pub {
 
       /// <summary>
       /// Configures a connection which can be used to connect to a data source.
-      /// This must be implemented if the plugin manifest has `canConfigureConnection` set to true.
-      /// This is an alternative to having a `configSchema` element in the manifest.
+      /// This must be implemented if the plugin manifest has
+      /// `canConfigureConnection` set to true. This is an alternative to having a
+      /// `configSchema` element in the manifest.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -270,7 +316,8 @@ namespace Pub {
 
       /// <summary>
       /// Configures a query which can be used to publish a schema.
-      /// This must be implemented if the plugin manifest has `canConfigureQuery` set to true.
+      /// This must be implemented if the plugin manifest has `canConfigureQuery` set
+      /// to true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -282,7 +329,8 @@ namespace Pub {
 
       /// <summary>
       /// Configures settings for real time publishing (change detection).
-      /// This must be implemented if the plugin manifest has `canPublishRealTime` set to true.
+      /// This must be implemented if the plugin manifest has `canPublishRealTime`
+      /// set to true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
@@ -293,7 +341,7 @@ namespace Pub {
       }
 
       /// <summary>
-      /// Invoked to begin an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to begin an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -305,7 +353,7 @@ namespace Pub {
       }
 
       /// <summary>
-      /// Invoked to complete an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to complete an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
@@ -317,13 +365,26 @@ namespace Pub {
       }
 
       /// <summary>
-      /// Configures a write back which can be used to write back a schema to the source.
-      /// This must be implemented if the plugin manifest has `canConfigureWrite` set to true.
+      /// Configures a write back which can be used to write back a schema to the
+      /// source. This must be implemented if the plugin manifest has
+      /// `canConfigureWrite` set to true.
       /// </summary>
       /// <param name="request">The request received from the client.</param>
       /// <param name="context">The context of the server-side call handler being invoked.</param>
       /// <returns>The response to send back to the client (wrapped by a task).</returns>
       public virtual global::System.Threading.Tasks.Task<global::Pub.ConfigureWriteResponse> ConfigureWrite(global::Pub.ConfigureWriteRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      /// <summary>
+      /// Configures a replication write back, where the plugin is in control
+      /// of the destination and can insert/update/delete at will.
+      /// </summary>
+      /// <param name="request">The request received from the client.</param>
+      /// <param name="context">The context of the server-side call handler being invoked.</param>
+      /// <returns>The response to send back to the client (wrapped by a task).</returns>
+      public virtual global::System.Threading.Tasks.Task<global::Pub.ConfigureReplicationResponse> ConfigureReplication(global::Pub.ConfigureReplicationRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -341,8 +402,9 @@ namespace Pub {
       }
 
       /// <summary>
-      /// Creates a stream of records to write back and opens a stream to receive acks for write backs
-      /// This must be implemented if the manifest has `canWrite` set to true.
+      /// Creates a stream of records to write back and opens a stream to receive
+      /// acks for write backs This must be implemented if the manifest has
+      /// `canWrite` set to true.
       /// </summary>
       /// <param name="requestStream">Used for reading requests from the client.</param>
       /// <param name="responseStream">Used for sending responses back to the client.</param>
@@ -471,7 +533,8 @@ namespace Pub {
       /// and maintain a session where any change in the connection state
       /// or updates to OAuth information are streamed back to the host.
       /// The plugin should maintain this connection until Disconnect is called.
-      /// This must be implemented if the plugin manifest has `canUseOAuth` set to true.
+      /// This must be implemented if the plugin manifest has `canUseOAuth` set to
+      /// true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -487,7 +550,8 @@ namespace Pub {
       /// and maintain a session where any change in the connection state
       /// or updates to OAuth information are streamed back to the host.
       /// The plugin should maintain this connection until Disconnect is called.
-      /// This must be implemented if the plugin manifest has `canUseOAuth` set to true.
+      /// This must be implemented if the plugin manifest has `canUseOAuth` set to
+      /// true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -497,7 +561,11 @@ namespace Pub {
         return CallInvoker.AsyncServerStreamingCall(__Method_ConnectSession, null, options, request);
       }
       /// <summary>
-      /// (DEPRECATED) Requests a listing of schemas this publisher can provide records for.
+      /// DiscoverShapes requests a listing of schemas this publisher can provide
+      /// records for.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -509,7 +577,11 @@ namespace Pub {
         return DiscoverShapes(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// (DEPRECATED) Requests a listing of schemas this publisher can provide records for.
+      /// DiscoverShapes requests a listing of schemas this publisher can provide
+      /// records for.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -519,7 +591,11 @@ namespace Pub {
         return CallInvoker.BlockingUnaryCall(__Method_DiscoverShapes, null, options, request);
       }
       /// <summary>
-      /// (DEPRECATED) Requests a listing of schemas this publisher can provide records for.
+      /// DiscoverShapes requests a listing of schemas this publisher can provide
+      /// records for.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -531,7 +607,11 @@ namespace Pub {
         return DiscoverShapesAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// (DEPRECATED) Requests a listing of schemas this publisher can provide records for.
+      /// DiscoverShapes requests a listing of schemas this publisher can provide
+      /// records for.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -542,6 +622,11 @@ namespace Pub {
       }
       /// <summary>
       /// Requests a listing of schemas this publisher can provide records for.
+      /// New plugins should implement DiscoverSchemaStream and stream discovered
+      /// schemes to the caller.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -554,6 +639,11 @@ namespace Pub {
       }
       /// <summary>
       /// Requests a listing of schemas this publisher can provide records for.
+      /// New plugins should implement DiscoverSchemaStream and stream discovered
+      /// schemes to the caller.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -564,6 +654,11 @@ namespace Pub {
       }
       /// <summary>
       /// Requests a listing of schemas this publisher can provide records for.
+      /// New plugins should implement DiscoverSchemaStream and stream discovered
+      /// schemes to the caller.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -576,6 +671,11 @@ namespace Pub {
       }
       /// <summary>
       /// Requests a listing of schemas this publisher can provide records for.
+      /// New plugins should implement DiscoverSchemaStream and stream discovered
+      /// schemes to the caller.
+      ///
+      /// Deprecated: Deprecated in API version 2. Implement DiscoverSchemasStream
+      /// instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -585,7 +685,36 @@ namespace Pub {
         return CallInvoker.AsyncUnaryCall(__Method_DiscoverSchemas, null, options, request);
       }
       /// <summary>
-      /// (DEPRECATED) PublishStream begins streaming records to the client from the plugin.
+      /// Requests a stream of schemas this publisher can provide records for.
+      ///
+      /// API Version: 3
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncServerStreamingCall<global::Pub.Schema> DiscoverSchemasStream(global::Pub.DiscoverSchemasRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DiscoverSchemasStream(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Requests a stream of schemas this publisher can provide records for.
+      ///
+      /// API Version: 3
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncServerStreamingCall<global::Pub.Schema> DiscoverSchemasStream(global::Pub.DiscoverSchemasRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_DiscoverSchemasStream, null, options, request);
+      }
+      /// <summary>
+      /// PublishStream begins streaming records to the client from the plugin.
+      /// Implement ReadStream instead.
+      ///
+      /// Deprecated: Deprecated in API Version 2. Implement ReadStream instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -597,7 +726,10 @@ namespace Pub {
         return PublishStream(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// (DEPRECATED) PublishStream begins streaming records to the client from the plugin.
+      /// PublishStream begins streaming records to the client from the plugin.
+      /// Implement ReadStream instead.
+      ///
+      /// Deprecated: Deprecated in API Version 2. Implement ReadStream instead.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -608,6 +740,7 @@ namespace Pub {
       }
       /// <summary>
       /// ReadStream begins streaming records to the client from the plugin.
+      /// API Version: 2
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -620,6 +753,7 @@ namespace Pub {
       }
       /// <summary>
       /// ReadStream begins streaming records to the client from the plugin.
+      /// API Version: 2
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -629,8 +763,8 @@ namespace Pub {
         return CallInvoker.AsyncServerStreamingCall(__Method_ReadStream, null, options, request);
       }
       /// <summary>
-      /// Tells the plugin to disconnect from its data source, stop any running publishes,
-      /// and gracefully prepare to be shut down.
+      /// Tells the plugin to disconnect from its data source, stop any running
+      /// publishes, and gracefully prepare to be shut down.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -642,8 +776,8 @@ namespace Pub {
         return Disconnect(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Tells the plugin to disconnect from its data source, stop any running publishes,
-      /// and gracefully prepare to be shut down.
+      /// Tells the plugin to disconnect from its data source, stop any running
+      /// publishes, and gracefully prepare to be shut down.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -653,8 +787,8 @@ namespace Pub {
         return CallInvoker.BlockingUnaryCall(__Method_Disconnect, null, options, request);
       }
       /// <summary>
-      /// Tells the plugin to disconnect from its data source, stop any running publishes,
-      /// and gracefully prepare to be shut down.
+      /// Tells the plugin to disconnect from its data source, stop any running
+      /// publishes, and gracefully prepare to be shut down.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -666,8 +800,8 @@ namespace Pub {
         return DisconnectAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Tells the plugin to disconnect from its data source, stop any running publishes,
-      /// and gracefully prepare to be shut down.
+      /// Tells the plugin to disconnect from its data source, stop any running
+      /// publishes, and gracefully prepare to be shut down.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -678,8 +812,9 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a connection which can be used to connect to a data source.
-      /// This must be implemented if the plugin manifest has `canConfigureConnection` set to true.
-      /// This is an alternative to having a `configSchema` element in the manifest.
+      /// This must be implemented if the plugin manifest has
+      /// `canConfigureConnection` set to true. This is an alternative to having a
+      /// `configSchema` element in the manifest.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -692,8 +827,9 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a connection which can be used to connect to a data source.
-      /// This must be implemented if the plugin manifest has `canConfigureConnection` set to true.
-      /// This is an alternative to having a `configSchema` element in the manifest.
+      /// This must be implemented if the plugin manifest has
+      /// `canConfigureConnection` set to true. This is an alternative to having a
+      /// `configSchema` element in the manifest.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -704,8 +840,9 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a connection which can be used to connect to a data source.
-      /// This must be implemented if the plugin manifest has `canConfigureConnection` set to true.
-      /// This is an alternative to having a `configSchema` element in the manifest.
+      /// This must be implemented if the plugin manifest has
+      /// `canConfigureConnection` set to true. This is an alternative to having a
+      /// `configSchema` element in the manifest.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -718,8 +855,9 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a connection which can be used to connect to a data source.
-      /// This must be implemented if the plugin manifest has `canConfigureConnection` set to true.
-      /// This is an alternative to having a `configSchema` element in the manifest.
+      /// This must be implemented if the plugin manifest has
+      /// `canConfigureConnection` set to true. This is an alternative to having a
+      /// `configSchema` element in the manifest.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -730,7 +868,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a query which can be used to publish a schema.
-      /// This must be implemented if the plugin manifest has `canConfigureQuery` set to true.
+      /// This must be implemented if the plugin manifest has `canConfigureQuery` set
+      /// to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -743,7 +882,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a query which can be used to publish a schema.
-      /// This must be implemented if the plugin manifest has `canConfigureQuery` set to true.
+      /// This must be implemented if the plugin manifest has `canConfigureQuery` set
+      /// to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -754,7 +894,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a query which can be used to publish a schema.
-      /// This must be implemented if the plugin manifest has `canConfigureQuery` set to true.
+      /// This must be implemented if the plugin manifest has `canConfigureQuery` set
+      /// to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -767,7 +908,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures a query which can be used to publish a schema.
-      /// This must be implemented if the plugin manifest has `canConfigureQuery` set to true.
+      /// This must be implemented if the plugin manifest has `canConfigureQuery` set
+      /// to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -778,7 +920,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures settings for real time publishing (change detection).
-      /// This must be implemented if the plugin manifest has `canPublishRealTime` set to true.
+      /// This must be implemented if the plugin manifest has `canPublishRealTime`
+      /// set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -791,7 +934,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures settings for real time publishing (change detection).
-      /// This must be implemented if the plugin manifest has `canPublishRealTime` set to true.
+      /// This must be implemented if the plugin manifest has `canPublishRealTime`
+      /// set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -802,7 +946,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures settings for real time publishing (change detection).
-      /// This must be implemented if the plugin manifest has `canPublishRealTime` set to true.
+      /// This must be implemented if the plugin manifest has `canPublishRealTime`
+      /// set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -815,7 +960,8 @@ namespace Pub {
       }
       /// <summary>
       /// Configures settings for real time publishing (change detection).
-      /// This must be implemented if the plugin manifest has `canPublishRealTime` set to true.
+      /// This must be implemented if the plugin manifest has `canPublishRealTime`
+      /// set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -825,7 +971,7 @@ namespace Pub {
         return CallInvoker.AsyncUnaryCall(__Method_ConfigureRealTime, null, options, request);
       }
       /// <summary>
-      /// Invoked to begin an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to begin an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -838,7 +984,7 @@ namespace Pub {
         return BeginOAuthFlow(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Invoked to begin an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to begin an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -849,7 +995,7 @@ namespace Pub {
         return CallInvoker.BlockingUnaryCall(__Method_BeginOAuthFlow, null, options, request);
       }
       /// <summary>
-      /// Invoked to begin an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to begin an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -862,7 +1008,7 @@ namespace Pub {
         return BeginOAuthFlowAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Invoked to begin an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to begin an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -873,7 +1019,7 @@ namespace Pub {
         return CallInvoker.AsyncUnaryCall(__Method_BeginOAuthFlow, null, options, request);
       }
       /// <summary>
-      /// Invoked to complete an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to complete an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -886,7 +1032,7 @@ namespace Pub {
         return CompleteOAuthFlow(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Invoked to complete an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to complete an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -897,7 +1043,7 @@ namespace Pub {
         return CallInvoker.BlockingUnaryCall(__Method_CompleteOAuthFlow, null, options, request);
       }
       /// <summary>
-      /// Invoked to complete an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to complete an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -910,7 +1056,7 @@ namespace Pub {
         return CompleteOAuthFlowAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Invoked to complete an OAuth flow. This must be implemented if the plugin 
+      /// Invoked to complete an OAuth flow. This must be implemented if the plugin
       /// manifest has `canUseOAuth` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
@@ -921,8 +1067,9 @@ namespace Pub {
         return CallInvoker.AsyncUnaryCall(__Method_CompleteOAuthFlow, null, options, request);
       }
       /// <summary>
-      /// Configures a write back which can be used to write back a schema to the source.
-      /// This must be implemented if the plugin manifest has `canConfigureWrite` set to true.
+      /// Configures a write back which can be used to write back a schema to the
+      /// source. This must be implemented if the plugin manifest has
+      /// `canConfigureWrite` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -934,8 +1081,9 @@ namespace Pub {
         return ConfigureWrite(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Configures a write back which can be used to write back a schema to the source.
-      /// This must be implemented if the plugin manifest has `canConfigureWrite` set to true.
+      /// Configures a write back which can be used to write back a schema to the
+      /// source. This must be implemented if the plugin manifest has
+      /// `canConfigureWrite` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -945,8 +1093,9 @@ namespace Pub {
         return CallInvoker.BlockingUnaryCall(__Method_ConfigureWrite, null, options, request);
       }
       /// <summary>
-      /// Configures a write back which can be used to write back a schema to the source.
-      /// This must be implemented if the plugin manifest has `canConfigureWrite` set to true.
+      /// Configures a write back which can be used to write back a schema to the
+      /// source. This must be implemented if the plugin manifest has
+      /// `canConfigureWrite` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
@@ -958,8 +1107,9 @@ namespace Pub {
         return ConfigureWriteAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Configures a write back which can be used to write back a schema to the source.
-      /// This must be implemented if the plugin manifest has `canConfigureWrite` set to true.
+      /// Configures a write back which can be used to write back a schema to the
+      /// source. This must be implemented if the plugin manifest has
+      /// `canConfigureWrite` set to true.
       /// </summary>
       /// <param name="request">The request to send to the server.</param>
       /// <param name="options">The options for the call.</param>
@@ -967,6 +1117,54 @@ namespace Pub {
       public virtual grpc::AsyncUnaryCall<global::Pub.ConfigureWriteResponse> ConfigureWriteAsync(global::Pub.ConfigureWriteRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_ConfigureWrite, null, options, request);
+      }
+      /// <summary>
+      /// Configures a replication write back, where the plugin is in control
+      /// of the destination and can insert/update/delete at will.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Pub.ConfigureReplicationResponse ConfigureReplication(global::Pub.ConfigureReplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ConfigureReplication(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Configures a replication write back, where the plugin is in control
+      /// of the destination and can insert/update/delete at will.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The response received from the server.</returns>
+      public virtual global::Pub.ConfigureReplicationResponse ConfigureReplication(global::Pub.ConfigureReplicationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.BlockingUnaryCall(__Method_ConfigureReplication, null, options, request);
+      }
+      /// <summary>
+      /// Configures a replication write back, where the plugin is in control
+      /// of the destination and can insert/update/delete at will.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
+      /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
+      /// <param name="cancellationToken">An optional token for canceling the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Pub.ConfigureReplicationResponse> ConfigureReplicationAsync(global::Pub.ConfigureReplicationRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return ConfigureReplicationAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      /// <summary>
+      /// Configures a replication write back, where the plugin is in control
+      /// of the destination and can insert/update/delete at will.
+      /// </summary>
+      /// <param name="request">The request to send to the server.</param>
+      /// <param name="options">The options for the call.</param>
+      /// <returns>The call object.</returns>
+      public virtual grpc::AsyncUnaryCall<global::Pub.ConfigureReplicationResponse> ConfigureReplicationAsync(global::Pub.ConfigureReplicationRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncUnaryCall(__Method_ConfigureReplication, null, options, request);
       }
       /// <summary>
       /// Invoked to begin a write back request
@@ -1017,8 +1215,9 @@ namespace Pub {
         return CallInvoker.AsyncUnaryCall(__Method_PrepareWrite, null, options, request);
       }
       /// <summary>
-      /// Creates a stream of records to write back and opens a stream to receive acks for write backs
-      /// This must be implemented if the manifest has `canWrite` set to true.
+      /// Creates a stream of records to write back and opens a stream to receive
+      /// acks for write backs This must be implemented if the manifest has
+      /// `canWrite` set to true.
       /// </summary>
       /// <param name="headers">The initial metadata to send with the call. This parameter is optional.</param>
       /// <param name="deadline">An optional deadline for the call. The call will be cancelled if deadline is hit.</param>
@@ -1029,8 +1228,9 @@ namespace Pub {
         return WriteStream(new grpc::CallOptions(headers, deadline, cancellationToken));
       }
       /// <summary>
-      /// Creates a stream of records to write back and opens a stream to receive acks for write backs
-      /// This must be implemented if the manifest has `canWrite` set to true.
+      /// Creates a stream of records to write back and opens a stream to receive
+      /// acks for write backs This must be implemented if the manifest has
+      /// `canWrite` set to true.
       /// </summary>
       /// <param name="options">The options for the call.</param>
       /// <returns>The call object.</returns>
@@ -1055,6 +1255,7 @@ namespace Pub {
           .AddMethod(__Method_ConnectSession, serviceImpl.ConnectSession)
           .AddMethod(__Method_DiscoverShapes, serviceImpl.DiscoverShapes)
           .AddMethod(__Method_DiscoverSchemas, serviceImpl.DiscoverSchemas)
+          .AddMethod(__Method_DiscoverSchemasStream, serviceImpl.DiscoverSchemasStream)
           .AddMethod(__Method_PublishStream, serviceImpl.PublishStream)
           .AddMethod(__Method_ReadStream, serviceImpl.ReadStream)
           .AddMethod(__Method_Disconnect, serviceImpl.Disconnect)
@@ -1064,6 +1265,7 @@ namespace Pub {
           .AddMethod(__Method_BeginOAuthFlow, serviceImpl.BeginOAuthFlow)
           .AddMethod(__Method_CompleteOAuthFlow, serviceImpl.CompleteOAuthFlow)
           .AddMethod(__Method_ConfigureWrite, serviceImpl.ConfigureWrite)
+          .AddMethod(__Method_ConfigureReplication, serviceImpl.ConfigureReplication)
           .AddMethod(__Method_PrepareWrite, serviceImpl.PrepareWrite)
           .AddMethod(__Method_WriteStream, serviceImpl.WriteStream).Build();
     }
@@ -1079,6 +1281,7 @@ namespace Pub {
       serviceBinder.AddMethod(__Method_ConnectSession, serviceImpl.ConnectSession);
       serviceBinder.AddMethod(__Method_DiscoverShapes, serviceImpl.DiscoverShapes);
       serviceBinder.AddMethod(__Method_DiscoverSchemas, serviceImpl.DiscoverSchemas);
+      serviceBinder.AddMethod(__Method_DiscoverSchemasStream, serviceImpl.DiscoverSchemasStream);
       serviceBinder.AddMethod(__Method_PublishStream, serviceImpl.PublishStream);
       serviceBinder.AddMethod(__Method_ReadStream, serviceImpl.ReadStream);
       serviceBinder.AddMethod(__Method_Disconnect, serviceImpl.Disconnect);
@@ -1088,6 +1291,7 @@ namespace Pub {
       serviceBinder.AddMethod(__Method_BeginOAuthFlow, serviceImpl.BeginOAuthFlow);
       serviceBinder.AddMethod(__Method_CompleteOAuthFlow, serviceImpl.CompleteOAuthFlow);
       serviceBinder.AddMethod(__Method_ConfigureWrite, serviceImpl.ConfigureWrite);
+      serviceBinder.AddMethod(__Method_ConfigureReplication, serviceImpl.ConfigureReplication);
       serviceBinder.AddMethod(__Method_PrepareWrite, serviceImpl.PrepareWrite);
       serviceBinder.AddMethod(__Method_WriteStream, serviceImpl.WriteStream);
     }

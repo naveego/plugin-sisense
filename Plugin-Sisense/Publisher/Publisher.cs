@@ -61,77 +61,101 @@ namespace Pub {
             "X2NvdW50ZXIYBiABKAgSGQoRaXNfdXBkYXRlX2NvdW50ZXIYByABKAgSGwoT",
             "cHVibGlzaGVyX21ldGFfanNvbhgIIAEoCRIWCg50eXBlX2F0X3NvdXJjZRgJ",
             "IAEoCRITCgtpc19udWxsYWJsZRgKIAEoCCITChFEaXNjb25uZWN0UmVxdWVz",
-            "dCIUChJEaXNjb25uZWN0UmVzcG9uc2Ui2gEKBlJlY29yZBIiCgZhY3Rpb24Y",
+            "dCIUChJEaXNjb25uZWN0UmVzcG9uc2UikwIKBlJlY29yZBIiCgZhY3Rpb24Y",
             "ASABKA4yEi5wdWIuUmVjb3JkLkFjdGlvbhIRCglkYXRhX2pzb24YAiABKAkS",
             "HAoUcmVhbF90aW1lX3N0YXRlX2pzb24YAyABKAkSDQoFY2F1c2UYBCABKAkS",
-            "FgoOY29ycmVsYXRpb25faWQYBSABKAkiVAoGQWN0aW9uEgoKBlVQU0VSVBAA",
-            "EgoKBklOU0VSVBABEgoKBlVQREFURRACEgoKBkRFTEVURRADEhoKFlJFQUxf",
-            "VElNRV9TVEFURV9DT01NSVQQBCJEChVDb25maWd1cmVRdWVyeVJlcXVlc3QS",
+            "FgoOY29ycmVsYXRpb25faWQYBSABKAkSEQoJcmVjb3JkX2lkGAYgASgJEiQK",
+            "CHZlcnNpb25zGAcgAygLMhIucHViLlJlY29yZFZlcnNpb24iVAoGQWN0aW9u",
+            "EgoKBlVQU0VSVBAAEgoKBklOU0VSVBABEgoKBlVQREFURRACEgoKBkRFTEVU",
+            "RRADEhoKFlJFQUxfVElNRV9TVEFURV9DT01NSVQQBCKJAQoNUmVjb3JkVmVy",
+            "c2lvbhIVCg1jb25uZWN0aW9uX2lkGAEgASgJEg4KBmpvYl9pZBgCIAEoCRIR",
+            "CglzY2hlbWFfaWQYAyABKAkSEQoJcmVjb3JkX2lkGAQgASgJEhEKCWRhdGFf",
+            "anNvbhgFIAEoCRIYChBzY2hlbWFfZGF0YV9qc29uGAYgASgJIkQKFUNvbmZp",
+            "Z3VyZVF1ZXJ5UmVxdWVzdBIrCgRmb3JtGAEgASgLMh0ucHViLkNvbmZpZ3Vy",
+            "YXRpb25Gb3JtUmVxdWVzdCJjChZDb25maWd1cmVRdWVyeVJlc3BvbnNlEiwK",
+            "BGZvcm0YASABKAsyHi5wdWIuQ29uZmlndXJhdGlvbkZvcm1SZXNwb25zZRIb",
+            "CgZzY2hlbWEYAiABKAsyCy5wdWIuU2NoZW1hIncKGkNvbmZpZ3VyZUNvbm5l",
+            "Y3Rpb25SZXF1ZXN0EisKBGZvcm0YASABKAsyHS5wdWIuQ29uZmlndXJhdGlv",
+            "bkZvcm1SZXF1ZXN0EiwKD2Nvbm5lY3RfcmVxdWVzdBgCIAEoCzITLnB1Yi5D",
+            "b25uZWN0UmVxdWVzdCJ7ChtDb25maWd1cmVDb25uZWN0aW9uUmVzcG9uc2US",
+            "LAoEZm9ybRgBIAEoCzIeLnB1Yi5Db25maWd1cmF0aW9uRm9ybVJlc3BvbnNl",
+            "Ei4KEGNvbm5lY3RfcmVzcG9uc2UYAiABKAsyFC5wdWIuQ29ubmVjdFJlc3Bv",
+            "bnNlImQKGENvbmZpZ3VyZVJlYWxUaW1lUmVxdWVzdBIrCgRmb3JtGAEgASgL",
+            "Mh0ucHViLkNvbmZpZ3VyYXRpb25Gb3JtUmVxdWVzdBIbCgZzY2hlbWEYAiAB",
+            "KAsyCy5wdWIuU2NoZW1hIkkKGUNvbmZpZ3VyZVJlYWxUaW1lUmVzcG9uc2US",
+            "LAoEZm9ybRgBIAEoCzIeLnB1Yi5Db25maWd1cmF0aW9uRm9ybVJlc3BvbnNl",
+            "IlIKGENvbmZpZ3VyYXRpb25Gb3JtUmVxdWVzdBIRCglkYXRhX2pzb24YASAB",
+            "KAkSEgoKc3RhdGVfanNvbhgCIAEoCRIPCgdpc19zYXZlGAMgASgIIpIBChlD",
+            "b25maWd1cmF0aW9uRm9ybVJlc3BvbnNlEhMKC3NjaGVtYV9qc29uGAEgASgJ",
+            "Eg8KB3VpX2pzb24YAiABKAkSEgoKc3RhdGVfanNvbhgDIAEoCRIRCglkYXRh",
+            "X2pzb24YBCABKAkSGAoQZGF0YV9lcnJvcnNfanNvbhgFIAEoCRIOCgZlcnJv",
+            "cnMYBiADKAkiXQoVQmVnaW5PQXV0aEZsb3dSZXF1ZXN0Ei4KDWNvbmZpZ3Vy",
+            "YXRpb24YASABKAsyFy5wdWIuT0F1dGhDb25maWd1cmF0aW9uEhQKDHJlZGly",
+            "ZWN0X3VybBgCIAEoCSIzChZCZWdpbk9BdXRoRmxvd1Jlc3BvbnNlEhkKEWF1",
+            "dGhvcml6YXRpb25fdXJsGAEgASgJIncKGENvbXBsZXRlT0F1dGhGbG93UmVx",
+            "dWVzdBIuCg1jb25maWd1cmF0aW9uGAEgASgLMhcucHViLk9BdXRoQ29uZmln",
+            "dXJhdGlvbhIUCgxyZWRpcmVjdF91cmwYAiABKAkSFQoNcmVkaXJlY3RfYm9k",
+            "eRgDIAEoCSJaChJPQXV0aENvbmZpZ3VyYXRpb24SEQoJY2xpZW50X2lkGAEg",
+            "ASgJEhUKDWNsaWVudF9zZWNyZXQYAiABKAkSGgoSY29uZmlndXJhdGlvbl9q",
+            "c29uGAMgASgJIjUKGUNvbXBsZXRlT0F1dGhGbG93UmVzcG9uc2USGAoQb2F1",
+            "dGhfc3RhdGVfanNvbhgBIAEoCSJEChVDb25maWd1cmVXcml0ZVJlcXVlc3QS",
             "KwoEZm9ybRgBIAEoCzIdLnB1Yi5Db25maWd1cmF0aW9uRm9ybVJlcXVlc3Qi",
-            "YwoWQ29uZmlndXJlUXVlcnlSZXNwb25zZRIsCgRmb3JtGAEgASgLMh4ucHVi",
+            "YwoWQ29uZmlndXJlV3JpdGVSZXNwb25zZRIsCgRmb3JtGAEgASgLMh4ucHVi",
             "LkNvbmZpZ3VyYXRpb25Gb3JtUmVzcG9uc2USGwoGc2NoZW1hGAIgASgLMgsu",
-            "cHViLlNjaGVtYSJ3ChpDb25maWd1cmVDb25uZWN0aW9uUmVxdWVzdBIrCgRm",
-            "b3JtGAEgASgLMh0ucHViLkNvbmZpZ3VyYXRpb25Gb3JtUmVxdWVzdBIsCg9j",
-            "b25uZWN0X3JlcXVlc3QYAiABKAsyEy5wdWIuQ29ubmVjdFJlcXVlc3Qiewob",
-            "Q29uZmlndXJlQ29ubmVjdGlvblJlc3BvbnNlEiwKBGZvcm0YASABKAsyHi5w",
-            "dWIuQ29uZmlndXJhdGlvbkZvcm1SZXNwb25zZRIuChBjb25uZWN0X3Jlc3Bv",
-            "bnNlGAIgASgLMhQucHViLkNvbm5lY3RSZXNwb25zZSJkChhDb25maWd1cmVS",
-            "ZWFsVGltZVJlcXVlc3QSKwoEZm9ybRgBIAEoCzIdLnB1Yi5Db25maWd1cmF0",
-            "aW9uRm9ybVJlcXVlc3QSGwoGc2NoZW1hGAIgASgLMgsucHViLlNjaGVtYSJJ",
-            "ChlDb25maWd1cmVSZWFsVGltZVJlc3BvbnNlEiwKBGZvcm0YASABKAsyHi5w",
-            "dWIuQ29uZmlndXJhdGlvbkZvcm1SZXNwb25zZSJBChhDb25maWd1cmF0aW9u",
-            "Rm9ybVJlcXVlc3QSEQoJZGF0YV9qc29uGAEgASgJEhIKCnN0YXRlX2pzb24Y",
-            "AiABKAkikgEKGUNvbmZpZ3VyYXRpb25Gb3JtUmVzcG9uc2USEwoLc2NoZW1h",
-            "X2pzb24YASABKAkSDwoHdWlfanNvbhgCIAEoCRISCgpzdGF0ZV9qc29uGAMg",
-            "ASgJEhEKCWRhdGFfanNvbhgEIAEoCRIYChBkYXRhX2Vycm9yc19qc29uGAUg",
-            "ASgJEg4KBmVycm9ycxgGIAMoCSJdChVCZWdpbk9BdXRoRmxvd1JlcXVlc3QS",
-            "LgoNY29uZmlndXJhdGlvbhgBIAEoCzIXLnB1Yi5PQXV0aENvbmZpZ3VyYXRp",
-            "b24SFAoMcmVkaXJlY3RfdXJsGAIgASgJIjMKFkJlZ2luT0F1dGhGbG93UmVz",
-            "cG9uc2USGQoRYXV0aG9yaXphdGlvbl91cmwYASABKAkidwoYQ29tcGxldGVP",
-            "QXV0aEZsb3dSZXF1ZXN0Ei4KDWNvbmZpZ3VyYXRpb24YASABKAsyFy5wdWIu",
-            "T0F1dGhDb25maWd1cmF0aW9uEhQKDHJlZGlyZWN0X3VybBgCIAEoCRIVCg1y",
-            "ZWRpcmVjdF9ib2R5GAMgASgJIloKEk9BdXRoQ29uZmlndXJhdGlvbhIRCglj",
-            "bGllbnRfaWQYASABKAkSFQoNY2xpZW50X3NlY3JldBgCIAEoCRIaChJjb25m",
-            "aWd1cmF0aW9uX2pzb24YAyABKAkiNQoZQ29tcGxldGVPQXV0aEZsb3dSZXNw",
-            "b25zZRIYChBvYXV0aF9zdGF0ZV9qc29uGAEgASgJIkQKFUNvbmZpZ3VyZVdy",
-            "aXRlUmVxdWVzdBIrCgRmb3JtGAEgASgLMh0ucHViLkNvbmZpZ3VyYXRpb25G",
-            "b3JtUmVxdWVzdCJjChZDb25maWd1cmVXcml0ZVJlc3BvbnNlEiwKBGZvcm0Y",
-            "ASABKAsyHi5wdWIuQ29uZmlndXJhdGlvbkZvcm1SZXNwb25zZRIbCgZzY2hl",
-            "bWEYAiABKAsyCy5wdWIuU2NoZW1hIk4KE1ByZXBhcmVXcml0ZVJlcXVlc3QS",
-            "GgoSY29tbWl0X3NsYV9zZWNvbmRzGAEgASgFEhsKBnNjaGVtYRgCIAEoCzIL",
-            "LnB1Yi5TY2hlbWEiFgoUUHJlcGFyZVdyaXRlUmVzcG9uc2UiMgoJUmVjb3Jk",
-            "QWNrEhYKDmNvcnJlbGF0aW9uX2lkGAEgASgJEg0KBWVycm9yGAIgASgJKj8K",
-            "CExvZ0xldmVsEgkKBUVycm9yEAASCAoEV2FybhABEggKBEluZm8QAhIJCgVE",
-            "ZWJ1ZxADEgkKBVRyYWNlEAQqkgEKDFByb3BlcnR5VHlwZRIKCgZTVFJJTkcQ",
-            "ABIICgRCT09MEAISCwoHSU5URUdFUhADEgkKBUZMT0FUEAQSCwoHREVDSU1B",
-            "TBAFEggKBERBVEUQBhIICgRUSU1FEAcSDAoIREFURVRJTUUQCBIICgRURVhU",
-            "EAkSCAoEQkxPQhAKEggKBEpTT04QCxIHCgNYTUwQDDL1CAoJUHVibGlzaGVy",
-            "EjwKCUNvbmZpZ3VyZRIVLnB1Yi5Db25maWd1cmVSZXF1ZXN0GhYucHViLkNv",
-            "bmZpZ3VyZVJlc3BvbnNlIgASNgoHQ29ubmVjdBITLnB1Yi5Db25uZWN0UmVx",
-            "dWVzdBoULnB1Yi5Db25uZWN0UmVzcG9uc2UiABI/Cg5Db25uZWN0U2Vzc2lv",
-            "bhITLnB1Yi5Db25uZWN0UmVxdWVzdBoULnB1Yi5Db25uZWN0UmVzcG9uc2Ui",
-            "ADABElAKDkRpc2NvdmVyU2hhcGVzEhsucHViLkRpc2NvdmVyU2NoZW1hc1Jl",
-            "cXVlc3QaHC5wdWIuRGlzY292ZXJTY2hlbWFzUmVzcG9uc2UiA4gCARJOCg9E",
-            "aXNjb3ZlclNjaGVtYXMSGy5wdWIuRGlzY292ZXJTY2hlbWFzUmVxdWVzdBoc",
-            "LnB1Yi5EaXNjb3ZlclNjaGVtYXNSZXNwb25zZSIAEjUKDVB1Ymxpc2hTdHJl",
-            "YW0SEC5wdWIuUmVhZFJlcXVlc3QaCy5wdWIuUmVjb3JkIgOIAgEwARIvCgpS",
-            "ZWFkU3RyZWFtEhAucHViLlJlYWRSZXF1ZXN0GgsucHViLlJlY29yZCIAMAES",
-            "PwoKRGlzY29ubmVjdBIWLnB1Yi5EaXNjb25uZWN0UmVxdWVzdBoXLnB1Yi5E",
-            "aXNjb25uZWN0UmVzcG9uc2UiABJaChNDb25maWd1cmVDb25uZWN0aW9uEh8u",
-            "cHViLkNvbmZpZ3VyZUNvbm5lY3Rpb25SZXF1ZXN0GiAucHViLkNvbmZpZ3Vy",
-            "ZUNvbm5lY3Rpb25SZXNwb25zZSIAEksKDkNvbmZpZ3VyZVF1ZXJ5EhoucHVi",
-            "LkNvbmZpZ3VyZVF1ZXJ5UmVxdWVzdBobLnB1Yi5Db25maWd1cmVRdWVyeVJl",
-            "c3BvbnNlIgASVAoRQ29uZmlndXJlUmVhbFRpbWUSHS5wdWIuQ29uZmlndXJl",
-            "UmVhbFRpbWVSZXF1ZXN0Gh4ucHViLkNvbmZpZ3VyZVJlYWxUaW1lUmVzcG9u",
-            "c2UiABJLCg5CZWdpbk9BdXRoRmxvdxIaLnB1Yi5CZWdpbk9BdXRoRmxvd1Jl",
-            "cXVlc3QaGy5wdWIuQmVnaW5PQXV0aEZsb3dSZXNwb25zZSIAElQKEUNvbXBs",
-            "ZXRlT0F1dGhGbG93Eh0ucHViLkNvbXBsZXRlT0F1dGhGbG93UmVxdWVzdBoe",
-            "LnB1Yi5Db21wbGV0ZU9BdXRoRmxvd1Jlc3BvbnNlIgASSwoOQ29uZmlndXJl",
-            "V3JpdGUSGi5wdWIuQ29uZmlndXJlV3JpdGVSZXF1ZXN0GhsucHViLkNvbmZp",
-            "Z3VyZVdyaXRlUmVzcG9uc2UiABJFCgxQcmVwYXJlV3JpdGUSGC5wdWIuUHJl",
-            "cGFyZVdyaXRlUmVxdWVzdBoZLnB1Yi5QcmVwYXJlV3JpdGVSZXNwb25zZSIA",
-            "EjAKC1dyaXRlU3RyZWFtEgsucHViLlJlY29yZBoOLnB1Yi5SZWNvcmRBY2si",
-            "ACgBMAFiBnByb3RvMw=="));
+            "cHViLlNjaGVtYSKXAQobQ29uZmlndXJlUmVwbGljYXRpb25SZXF1ZXN0EisK",
+            "BGZvcm0YASABKAsyHS5wdWIuQ29uZmlndXJhdGlvbkZvcm1SZXF1ZXN0EhsK",
+            "BnNjaGVtYRgCIAEoCzILLnB1Yi5TY2hlbWESLgoIdmVyc2lvbnMYAyADKAsy",
+            "HC5wdWIuUmVwbGljYXRpb25Xcml0ZVZlcnNpb24iTAocQ29uZmlndXJlUmVw",
+            "bGljYXRpb25SZXNwb25zZRIsCgRmb3JtGAEgASgLMh4ucHViLkNvbmZpZ3Vy",
+            "YXRpb25Gb3JtUmVzcG9uc2UigQEKE1ByZXBhcmVXcml0ZVJlcXVlc3QSGgoS",
+            "Y29tbWl0X3NsYV9zZWNvbmRzGAEgASgFEhsKBnNjaGVtYRgCIAEoCzILLnB1",
+            "Yi5TY2hlbWESMQoLcmVwbGljYXRpb24YAyABKAsyHC5wdWIuUmVwbGljYXRp",
+            "b25Xcml0ZVJlcXVlc3QiYAoXUmVwbGljYXRpb25Xcml0ZVJlcXVlc3QSLgoI",
+            "dmVyc2lvbnMYASADKAsyHC5wdWIuUmVwbGljYXRpb25Xcml0ZVZlcnNpb24S",
+            "FQoNc2V0dGluZ3NfanNvbhgCIAEoCSLUAgoXUmVwbGljYXRpb25Xcml0ZVZl",
+            "cnNpb24SFQoNY29ubmVjdGlvbl9pZBgBIAEoCRIXCg9jb25uZWN0aW9uX25h",
+            "bWUYAiABKAkSDgoGam9iX2lkGAMgASgJEhAKCGpvYl9uYW1lGAQgASgJEhEK",
+            "CXNjaGVtYV9pZBgFIAEoCRITCgtzY2hlbWFfbmFtZRgGIAEoCRJnCh9jYXB0",
+            "dXJlZF9zY2hlbWFfZGF0YV9wcm9wZXJ0aWVzGAcgAygLMj4ucHViLlJlcGxp",
+            "Y2F0aW9uV3JpdGVWZXJzaW9uLkNhcHR1cmVkU2NoZW1hRGF0YVByb3BlcnRp",
+            "ZXNFbnRyeRpWCiFDYXB0dXJlZFNjaGVtYURhdGFQcm9wZXJ0aWVzRW50cnkS",
+            "CwoDa2V5GAEgASgJEiAKBXZhbHVlGAIgASgOMhEucHViLlByb3BlcnR5VHlw",
+            "ZToCOAEiFgoUUHJlcGFyZVdyaXRlUmVzcG9uc2UiMgoJUmVjb3JkQWNrEhYK",
+            "DmNvcnJlbGF0aW9uX2lkGAEgASgJEg0KBWVycm9yGAIgASgJKj8KCExvZ0xl",
+            "dmVsEgkKBUVycm9yEAASCAoEV2FybhABEggKBEluZm8QAhIJCgVEZWJ1ZxAD",
+            "EgkKBVRyYWNlEAQqkgEKDFByb3BlcnR5VHlwZRIKCgZTVFJJTkcQABIICgRC",
+            "T09MEAISCwoHSU5URUdFUhADEgkKBUZMT0FUEAQSCwoHREVDSU1BTBAFEggK",
+            "BERBVEUQBhIICgRUSU1FEAcSDAoIREFURVRJTUUQCBIICgRURVhUEAkSCAoE",
+            "QkxPQhAKEggKBEpTT04QCxIHCgNYTUwQDDKbCgoJUHVibGlzaGVyEjwKCUNv",
+            "bmZpZ3VyZRIVLnB1Yi5Db25maWd1cmVSZXF1ZXN0GhYucHViLkNvbmZpZ3Vy",
+            "ZVJlc3BvbnNlIgASNgoHQ29ubmVjdBITLnB1Yi5Db25uZWN0UmVxdWVzdBoU",
+            "LnB1Yi5Db25uZWN0UmVzcG9uc2UiABI/Cg5Db25uZWN0U2Vzc2lvbhITLnB1",
+            "Yi5Db25uZWN0UmVxdWVzdBoULnB1Yi5Db25uZWN0UmVzcG9uc2UiADABElAK",
+            "DkRpc2NvdmVyU2hhcGVzEhsucHViLkRpc2NvdmVyU2NoZW1hc1JlcXVlc3Qa",
+            "HC5wdWIuRGlzY292ZXJTY2hlbWFzUmVzcG9uc2UiA4gCARJOCg9EaXNjb3Zl",
+            "clNjaGVtYXMSGy5wdWIuRGlzY292ZXJTY2hlbWFzUmVxdWVzdBocLnB1Yi5E",
+            "aXNjb3ZlclNjaGVtYXNSZXNwb25zZSIAEkUKFURpc2NvdmVyU2NoZW1hc1N0",
+            "cmVhbRIbLnB1Yi5EaXNjb3ZlclNjaGVtYXNSZXF1ZXN0GgsucHViLlNjaGVt",
+            "YSIAMAESNQoNUHVibGlzaFN0cmVhbRIQLnB1Yi5SZWFkUmVxdWVzdBoLLnB1",
+            "Yi5SZWNvcmQiA4gCATABEi8KClJlYWRTdHJlYW0SEC5wdWIuUmVhZFJlcXVl",
+            "c3QaCy5wdWIuUmVjb3JkIgAwARI/CgpEaXNjb25uZWN0EhYucHViLkRpc2Nv",
+            "bm5lY3RSZXF1ZXN0GhcucHViLkRpc2Nvbm5lY3RSZXNwb25zZSIAEloKE0Nv",
+            "bmZpZ3VyZUNvbm5lY3Rpb24SHy5wdWIuQ29uZmlndXJlQ29ubmVjdGlvblJl",
+            "cXVlc3QaIC5wdWIuQ29uZmlndXJlQ29ubmVjdGlvblJlc3BvbnNlIgASSwoO",
+            "Q29uZmlndXJlUXVlcnkSGi5wdWIuQ29uZmlndXJlUXVlcnlSZXF1ZXN0Ghsu",
+            "cHViLkNvbmZpZ3VyZVF1ZXJ5UmVzcG9uc2UiABJUChFDb25maWd1cmVSZWFs",
+            "VGltZRIdLnB1Yi5Db25maWd1cmVSZWFsVGltZVJlcXVlc3QaHi5wdWIuQ29u",
+            "ZmlndXJlUmVhbFRpbWVSZXNwb25zZSIAEksKDkJlZ2luT0F1dGhGbG93Ehou",
+            "cHViLkJlZ2luT0F1dGhGbG93UmVxdWVzdBobLnB1Yi5CZWdpbk9BdXRoRmxv",
+            "d1Jlc3BvbnNlIgASVAoRQ29tcGxldGVPQXV0aEZsb3cSHS5wdWIuQ29tcGxl",
+            "dGVPQXV0aEZsb3dSZXF1ZXN0Gh4ucHViLkNvbXBsZXRlT0F1dGhGbG93UmVz",
+            "cG9uc2UiABJLCg5Db25maWd1cmVXcml0ZRIaLnB1Yi5Db25maWd1cmVXcml0",
+            "ZVJlcXVlc3QaGy5wdWIuQ29uZmlndXJlV3JpdGVSZXNwb25zZSIAEl0KFENv",
+            "bmZpZ3VyZVJlcGxpY2F0aW9uEiAucHViLkNvbmZpZ3VyZVJlcGxpY2F0aW9u",
+            "UmVxdWVzdBohLnB1Yi5Db25maWd1cmVSZXBsaWNhdGlvblJlc3BvbnNlIgAS",
+            "RQoMUHJlcGFyZVdyaXRlEhgucHViLlByZXBhcmVXcml0ZVJlcXVlc3QaGS5w",
+            "dWIuUHJlcGFyZVdyaXRlUmVzcG9uc2UiABIwCgtXcml0ZVN0cmVhbRILLnB1",
+            "Yi5SZWNvcmQaDi5wdWIuUmVjb3JkQWNrIgAoATABYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::Pub.LogLevel), typeof(global::Pub.PropertyType), }, new pbr::GeneratedClrTypeInfo[] {
@@ -148,14 +172,15 @@ namespace Pub {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.Property), global::Pub.Property.Parser, new[]{ "Id", "Name", "Description", "Type", "IsKey", "IsCreateCounter", "IsUpdateCounter", "PublisherMetaJson", "TypeAtSource", "IsNullable" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.DisconnectRequest), global::Pub.DisconnectRequest.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.DisconnectResponse), global::Pub.DisconnectResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.Record), global::Pub.Record.Parser, new[]{ "Action", "DataJson", "RealTimeStateJson", "Cause", "CorrelationId" }, null, new[]{ typeof(global::Pub.Record.Types.Action) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.Record), global::Pub.Record.Parser, new[]{ "Action", "DataJson", "RealTimeStateJson", "Cause", "CorrelationId", "RecordId", "Versions" }, null, new[]{ typeof(global::Pub.Record.Types.Action) }, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.RecordVersion), global::Pub.RecordVersion.Parser, new[]{ "ConnectionId", "JobId", "SchemaId", "RecordId", "DataJson", "SchemaDataJson" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureQueryRequest), global::Pub.ConfigureQueryRequest.Parser, new[]{ "Form" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureQueryResponse), global::Pub.ConfigureQueryResponse.Parser, new[]{ "Form", "Schema" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureConnectionRequest), global::Pub.ConfigureConnectionRequest.Parser, new[]{ "Form", "ConnectRequest" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureConnectionResponse), global::Pub.ConfigureConnectionResponse.Parser, new[]{ "Form", "ConnectResponse" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureRealTimeRequest), global::Pub.ConfigureRealTimeRequest.Parser, new[]{ "Form", "Schema" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureRealTimeResponse), global::Pub.ConfigureRealTimeResponse.Parser, new[]{ "Form" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigurationFormRequest), global::Pub.ConfigurationFormRequest.Parser, new[]{ "DataJson", "StateJson" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigurationFormRequest), global::Pub.ConfigurationFormRequest.Parser, new[]{ "DataJson", "StateJson", "IsSave" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigurationFormResponse), global::Pub.ConfigurationFormResponse.Parser, new[]{ "SchemaJson", "UiJson", "StateJson", "DataJson", "DataErrorsJson", "Errors" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.BeginOAuthFlowRequest), global::Pub.BeginOAuthFlowRequest.Parser, new[]{ "Configuration", "RedirectUrl" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.BeginOAuthFlowResponse), global::Pub.BeginOAuthFlowResponse.Parser, new[]{ "AuthorizationUrl" }, null, null, null),
@@ -164,7 +189,11 @@ namespace Pub {
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.CompleteOAuthFlowResponse), global::Pub.CompleteOAuthFlowResponse.Parser, new[]{ "OauthStateJson" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureWriteRequest), global::Pub.ConfigureWriteRequest.Parser, new[]{ "Form" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureWriteResponse), global::Pub.ConfigureWriteResponse.Parser, new[]{ "Form", "Schema" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.PrepareWriteRequest), global::Pub.PrepareWriteRequest.Parser, new[]{ "CommitSlaSeconds", "Schema" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureReplicationRequest), global::Pub.ConfigureReplicationRequest.Parser, new[]{ "Form", "Schema", "Versions" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ConfigureReplicationResponse), global::Pub.ConfigureReplicationResponse.Parser, new[]{ "Form" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.PrepareWriteRequest), global::Pub.PrepareWriteRequest.Parser, new[]{ "CommitSlaSeconds", "Schema", "Replication" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ReplicationWriteRequest), global::Pub.ReplicationWriteRequest.Parser, new[]{ "Versions", "SettingsJson" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Pub.ReplicationWriteVersion), global::Pub.ReplicationWriteVersion.Parser, new[]{ "ConnectionId", "ConnectionName", "JobId", "JobName", "SchemaId", "SchemaName", "CapturedSchemaDataProperties" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.PrepareWriteResponse), global::Pub.PrepareWriteResponse.Parser, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Pub.RecordAck), global::Pub.RecordAck.Parser, new[]{ "CorrelationId", "Error" }, null, null, null)
           }));
@@ -318,7 +347,8 @@ namespace Pub {
     public const int TemporaryDirectoryFieldNumber = 4;
     private string temporaryDirectory_ = "";
     /// <summary>
-    /// Directory where the plugin can store temporary information which may be deleted.
+    /// Directory where the plugin can store temporary information which may be
+    /// deleted.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string TemporaryDirectory {
@@ -602,7 +632,8 @@ namespace Pub {
     private string settingsJson_ = "";
     /// <summary>
     /// The settings the publisher should use to connect, as a JSON string.
-    /// The JSON will be based on the JSONSchema defined in the publisher's package.json.
+    /// The JSON will be based on the JSONSchema defined in the publisher's
+    /// package.json.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string SettingsJson {
@@ -631,7 +662,8 @@ namespace Pub {
     public const int OauthStateJsonFieldNumber = 4;
     private string oauthStateJson_ = "";
     /// <summary>
-    /// The OAuth state returned from the last Connect, ConnectSession, or CompleteOAuthFlow.
+    /// The OAuth state returned from the last Connect, ConnectSession, or
+    /// CompleteOAuthFlow.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string OauthStateJson {
@@ -821,8 +853,8 @@ namespace Pub {
     public const int ConnectionErrorFieldNumber = 2;
     private string connectionError_ = "";
     /// <summary>
-    /// If the connection settings appear valid, connecting to the target system failed,
-    /// this should contain the error from the target system.
+    /// If the connection settings appear valid, connecting to the target system
+    /// failed, this should contain the error from the target system.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ConnectionError {
@@ -853,7 +885,7 @@ namespace Pub {
     /// <summary>
     /// The OAuth data which should be stored securely and passed next time
     /// a connection is requested. This is returned by Connect because
-    /// forming the connection may have used up a refresh token and 
+    /// forming the connection may have used up a refresh token and
     /// the new refresh token must now be stored.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1127,7 +1159,7 @@ namespace Pub {
     private uint dataVersion_;
     /// <summary>
     /// The data_version is a counter that will be incremented whenever
-    /// all data produced for a particular job_id should be discarded.    
+    /// all data produced for a particular job_id should be discarded.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public uint DataVersion {
@@ -1370,7 +1402,8 @@ namespace Pub {
     public const int PropertyIdFieldNumber = 2;
     private string propertyId_ = "";
     /// <summary>
-    /// The id of the property on each record which should be matched against the value.
+    /// The id of the property on each record which should be matched against the
+    /// value.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PropertyId {
@@ -1384,8 +1417,9 @@ namespace Pub {
     public const int ValueFieldNumber = 3;
     private string value_ = "";
     /// <summary>
-    /// The value of the which should be matched against the named property for each record, as a string.
-    /// The publisher is responsible for converting the value to the correct type.
+    /// The value of the which should be matched against the named property for
+    /// each record, as a string. The publisher is responsible for converting the
+    /// value to the correct type.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Value {
@@ -1727,7 +1761,8 @@ namespace Pub {
         /// </summary>
         [pbr::OriginalName("ALL")] All = 0,
         /// <summary>
-        /// REFRESH means the publisher return (updated) schemas identified by the partial schemas included in to_refresh.
+        /// REFRESH means the publisher return (updated) schemas identified by the
+        /// partial schemas included in to_refresh.
         /// </summary>
         [pbr::OriginalName("REFRESH")] Refresh = 1,
       }
@@ -1922,7 +1957,8 @@ namespace Pub {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    /// Name of this schema (must be a permanant identifier which is unique in this source).
+    /// Name of this schema (must be a permanant identifier which is unique in this
+    /// source).
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -1979,7 +2015,8 @@ namespace Pub {
         = pb::FieldCodec.ForMessage(50, global::Pub.Record.Parser);
     private readonly pbc::RepeatedField<global::Pub.Record> sample_ = new pbc::RepeatedField<global::Pub.Record>();
     /// <summary>
-    /// Sample containing zero or more records representative of the data in this schema.
+    /// Sample containing zero or more records representative of the data in this
+    /// schema.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Pub.Record> Sample {
@@ -1990,8 +2027,10 @@ namespace Pub {
     public const int QueryFieldNumber = 7;
     private string query_ = "";
     /// <summary>
-    /// When returned from a publisher, the optional query which can be passed to the publisher to publish records from this schema.
-    /// When passed to the publisher, the query which should be used to publish records from this schema.
+    /// When returned from a publisher, the optional query which can be passed to
+    /// the publisher to publish records from this schema. When passed to the
+    /// publisher, the query which should be used to publish records from this
+    /// schema.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Query {
@@ -2005,7 +2044,8 @@ namespace Pub {
     public const int PublisherMetaJsonFieldNumber = 8;
     private string publisherMetaJson_ = "";
     /// <summary>
-    /// Arbitrary JSON blob containing information the publisher uses for things like change detection.
+    /// Arbitrary JSON blob containing information the publisher uses for things
+    /// like change detection.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PublisherMetaJson {
@@ -2554,7 +2594,8 @@ namespace Pub {
     /// <summary>
     /// Set to true if this property is an orderable value which can be used
     /// to determine if one record was created more recently than another record.
-    /// For example, a CreatedAt datetime column or an auto-incrementing integer primary key.
+    /// For example, a CreatedAt datetime column or an auto-incrementing integer
+    /// primary key.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool IsCreateCounter {
@@ -2584,7 +2625,8 @@ namespace Pub {
     public const int PublisherMetaJsonFieldNumber = 8;
     private string publisherMetaJson_ = "";
     /// <summary>
-    /// Arbitrary JSON blob containing information the publisher uses for things like change detection.
+    /// Arbitrary JSON blob containing information the publisher uses for things
+    /// like change detection.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string PublisherMetaJson {
@@ -3083,6 +3125,8 @@ namespace Pub {
       realTimeStateJson_ = other.realTimeStateJson_;
       cause_ = other.cause_;
       correlationId_ = other.correlationId_;
+      recordId_ = other.recordId_;
+      versions_ = other.versions_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -3095,8 +3139,9 @@ namespace Pub {
     public const int ActionFieldNumber = 1;
     private global::Pub.Record.Types.Action action_ = 0;
     /// <summary>
-    /// Action for this record. Default value is UPSERT if the plugin 
-    /// cannot determine what the action should be relative to data alreay acquired.
+    /// Action for this record. Default value is UPSERT if the plugin
+    /// cannot determine what the action should be relative to data alreay
+    /// acquired.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Pub.Record.Types.Action Action {
@@ -3125,7 +3170,8 @@ namespace Pub {
     private string realTimeStateJson_ = "";
     /// <summary>
     /// State which should be preserved and passed back to the next
-    /// call of PublishStream. Only considered if action indicates this is a state commit.
+    /// call of PublishStream. Only considered if action indicates this is a state
+    /// commit.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string RealTimeStateJson {
@@ -3140,8 +3186,9 @@ namespace Pub {
     private string cause_ = "";
     /// <summary>
     /// Cause for the publish of the record.
-    /// If provided, this should be an end-user readable string describing what triggered the publish.
-    /// This should only be set for real time published records, where the cause may be interesting.
+    /// If provided, this should be an end-user readable string describing what
+    /// triggered the publish. This should only be set for real time published
+    /// records, where the cause may be interesting.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Cause {
@@ -3166,6 +3213,35 @@ namespace Pub {
       }
     }
 
+    /// <summary>Field number for the "record_id" field.</summary>
+    public const int RecordIdFieldNumber = 6;
+    private string recordId_ = "";
+    /// <summary>
+    /// RecordID for the source record. 
+    /// Only set on a replication writeback.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RecordId {
+      get { return recordId_; }
+      set {
+        recordId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "versions" field.</summary>
+    public const int VersionsFieldNumber = 7;
+    private static readonly pb::FieldCodec<global::Pub.RecordVersion> _repeated_versions_codec
+        = pb::FieldCodec.ForMessage(58, global::Pub.RecordVersion.Parser);
+    private readonly pbc::RepeatedField<global::Pub.RecordVersion> versions_ = new pbc::RepeatedField<global::Pub.RecordVersion>();
+    /// <summary>
+    /// Versions of the record from other sources. 
+    /// Only set on a replication writeback.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pub.RecordVersion> Versions {
+      get { return versions_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Record);
@@ -3184,6 +3260,8 @@ namespace Pub {
       if (RealTimeStateJson != other.RealTimeStateJson) return false;
       if (Cause != other.Cause) return false;
       if (CorrelationId != other.CorrelationId) return false;
+      if (RecordId != other.RecordId) return false;
+      if(!versions_.Equals(other.versions_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -3195,6 +3273,8 @@ namespace Pub {
       if (RealTimeStateJson.Length != 0) hash ^= RealTimeStateJson.GetHashCode();
       if (Cause.Length != 0) hash ^= Cause.GetHashCode();
       if (CorrelationId.Length != 0) hash ^= CorrelationId.GetHashCode();
+      if (RecordId.Length != 0) hash ^= RecordId.GetHashCode();
+      hash ^= versions_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -3228,6 +3308,11 @@ namespace Pub {
         output.WriteRawTag(42);
         output.WriteString(CorrelationId);
       }
+      if (RecordId.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RecordId);
+      }
+      versions_.WriteTo(output, _repeated_versions_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -3251,6 +3336,10 @@ namespace Pub {
       if (CorrelationId.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(CorrelationId);
       }
+      if (RecordId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RecordId);
+      }
+      size += versions_.CalculateSize(_repeated_versions_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -3277,6 +3366,10 @@ namespace Pub {
       if (other.CorrelationId.Length != 0) {
         CorrelationId = other.CorrelationId;
       }
+      if (other.RecordId.Length != 0) {
+        RecordId = other.RecordId;
+      }
+      versions_.Add(other.versions_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -3308,6 +3401,14 @@ namespace Pub {
             CorrelationId = input.ReadString();
             break;
           }
+          case 50: {
+            RecordId = input.ReadString();
+            break;
+          }
+          case 58: {
+            versions_.AddEntriesFrom(input, _repeated_versions_codec);
+            break;
+          }
         }
       }
     }
@@ -3333,6 +3434,298 @@ namespace Pub {
 
   }
 
+  /// <summary>
+  /// A version of a record, provided on a replication writeback.
+  /// Contains the data from a version mapped from a schema, rather
+  /// than the golden record data.
+  /// </summary>
+  public sealed partial class RecordVersion : pb::IMessage<RecordVersion> {
+    private static readonly pb::MessageParser<RecordVersion> _parser = new pb::MessageParser<RecordVersion>(() => new RecordVersion());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<RecordVersion> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[14]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordVersion() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordVersion(RecordVersion other) : this() {
+      connectionId_ = other.connectionId_;
+      jobId_ = other.jobId_;
+      schemaId_ = other.schemaId_;
+      recordId_ = other.recordId_;
+      dataJson_ = other.dataJson_;
+      schemaDataJson_ = other.schemaDataJson_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public RecordVersion Clone() {
+      return new RecordVersion(this);
+    }
+
+    /// <summary>Field number for the "connection_id" field.</summary>
+    public const int ConnectionIdFieldNumber = 1;
+    private string connectionId_ = "";
+    /// <summary>
+    /// The connection than produced this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ConnectionId {
+      get { return connectionId_; }
+      set {
+        connectionId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "job_id" field.</summary>
+    public const int JobIdFieldNumber = 2;
+    private string jobId_ = "";
+    /// <summary>
+    /// The job that produced this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string JobId {
+      get { return jobId_; }
+      set {
+        jobId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "schema_id" field.</summary>
+    public const int SchemaIdFieldNumber = 3;
+    private string schemaId_ = "";
+    /// <summary>
+    /// The schema that produced this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaId {
+      get { return schemaId_; }
+      set {
+        schemaId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "record_id" field.</summary>
+    public const int RecordIdFieldNumber = 4;
+    private string recordId_ = "";
+    /// <summary>
+    /// The RID of the original record for this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string RecordId {
+      get { return recordId_; }
+      set {
+        recordId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "data_json" field.</summary>
+    public const int DataJsonFieldNumber = 5;
+    private string dataJson_ = "";
+    /// <summary>
+    /// The shape data mapped from the schema data for this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string DataJson {
+      get { return dataJson_; }
+      set {
+        dataJson_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "schema_data_json" field.</summary>
+    public const int SchemaDataJsonFieldNumber = 6;
+    private string schemaDataJson_ = "";
+    /// <summary>
+    /// Any captured schema data for this version.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaDataJson {
+      get { return schemaDataJson_; }
+      set {
+        schemaDataJson_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as RecordVersion);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(RecordVersion other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ConnectionId != other.ConnectionId) return false;
+      if (JobId != other.JobId) return false;
+      if (SchemaId != other.SchemaId) return false;
+      if (RecordId != other.RecordId) return false;
+      if (DataJson != other.DataJson) return false;
+      if (SchemaDataJson != other.SchemaDataJson) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ConnectionId.Length != 0) hash ^= ConnectionId.GetHashCode();
+      if (JobId.Length != 0) hash ^= JobId.GetHashCode();
+      if (SchemaId.Length != 0) hash ^= SchemaId.GetHashCode();
+      if (RecordId.Length != 0) hash ^= RecordId.GetHashCode();
+      if (DataJson.Length != 0) hash ^= DataJson.GetHashCode();
+      if (SchemaDataJson.Length != 0) hash ^= SchemaDataJson.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ConnectionId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ConnectionId);
+      }
+      if (JobId.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(JobId);
+      }
+      if (SchemaId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(SchemaId);
+      }
+      if (RecordId.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(RecordId);
+      }
+      if (DataJson.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(DataJson);
+      }
+      if (SchemaDataJson.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(SchemaDataJson);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ConnectionId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ConnectionId);
+      }
+      if (JobId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(JobId);
+      }
+      if (SchemaId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaId);
+      }
+      if (RecordId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RecordId);
+      }
+      if (DataJson.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(DataJson);
+      }
+      if (SchemaDataJson.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaDataJson);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(RecordVersion other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ConnectionId.Length != 0) {
+        ConnectionId = other.ConnectionId;
+      }
+      if (other.JobId.Length != 0) {
+        JobId = other.JobId;
+      }
+      if (other.SchemaId.Length != 0) {
+        SchemaId = other.SchemaId;
+      }
+      if (other.RecordId.Length != 0) {
+        RecordId = other.RecordId;
+      }
+      if (other.DataJson.Length != 0) {
+        DataJson = other.DataJson;
+      }
+      if (other.SchemaDataJson.Length != 0) {
+        SchemaDataJson = other.SchemaDataJson;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ConnectionId = input.ReadString();
+            break;
+          }
+          case 18: {
+            JobId = input.ReadString();
+            break;
+          }
+          case 26: {
+            SchemaId = input.ReadString();
+            break;
+          }
+          case 34: {
+            RecordId = input.ReadString();
+            break;
+          }
+          case 42: {
+            DataJson = input.ReadString();
+            break;
+          }
+          case 50: {
+            SchemaDataJson = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class ConfigureQueryRequest : pb::IMessage<ConfigureQueryRequest> {
     private static readonly pb::MessageParser<ConfigureQueryRequest> _parser = new pb::MessageParser<ConfigureQueryRequest>(() => new ConfigureQueryRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -3341,7 +3734,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[14]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[15]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3479,7 +3872,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[15]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[16]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3651,7 +4044,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[16]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[17]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -3827,7 +4220,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[17]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[18]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4001,7 +4394,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[18]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[19]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4176,7 +4569,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[19]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[20]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4311,7 +4704,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[20]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[21]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4330,6 +4723,7 @@ namespace Pub {
     public ConfigurationFormRequest(ConfigurationFormRequest other) : this() {
       dataJson_ = other.dataJson_;
       stateJson_ = other.stateJson_;
+      isSave_ = other.isSave_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -4367,6 +4761,23 @@ namespace Pub {
       }
     }
 
+    /// <summary>Field number for the "is_save" field.</summary>
+    public const int IsSaveFieldNumber = 3;
+    private bool isSave_;
+    /// <summary>
+    /// If true, the user has indicated that they want to save the current
+    /// settings, so the plugin should perform final validation
+    /// and may attempt to perform any destructive actions needed
+    /// to apply the settings.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool IsSave {
+      get { return isSave_; }
+      set {
+        isSave_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as ConfigurationFormRequest);
@@ -4382,6 +4793,7 @@ namespace Pub {
       }
       if (DataJson != other.DataJson) return false;
       if (StateJson != other.StateJson) return false;
+      if (IsSave != other.IsSave) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -4390,6 +4802,7 @@ namespace Pub {
       int hash = 1;
       if (DataJson.Length != 0) hash ^= DataJson.GetHashCode();
       if (StateJson.Length != 0) hash ^= StateJson.GetHashCode();
+      if (IsSave != false) hash ^= IsSave.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -4411,6 +4824,10 @@ namespace Pub {
         output.WriteRawTag(18);
         output.WriteString(StateJson);
       }
+      if (IsSave != false) {
+        output.WriteRawTag(24);
+        output.WriteBool(IsSave);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -4424,6 +4841,9 @@ namespace Pub {
       }
       if (StateJson.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(StateJson);
+      }
+      if (IsSave != false) {
+        size += 1 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -4441,6 +4861,9 @@ namespace Pub {
       }
       if (other.StateJson.Length != 0) {
         StateJson = other.StateJson;
+      }
+      if (other.IsSave != false) {
+        IsSave = other.IsSave;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -4461,6 +4884,10 @@ namespace Pub {
             StateJson = input.ReadString();
             break;
           }
+          case 24: {
+            IsSave = input.ReadBool();
+            break;
+          }
         }
       }
     }
@@ -4475,7 +4902,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[21]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[22]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4538,7 +4965,8 @@ namespace Pub {
     public const int StateJsonFieldNumber = 3;
     private string stateJson_ = "";
     /// <summary>
-    /// The state object which should be passed in any future Configure*Request as part of this configuration session.
+    /// The state object which should be passed in any future Configure*Request as
+    /// part of this configuration session.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string StateJson {
@@ -4552,7 +4980,7 @@ namespace Pub {
     public const int DataJsonFieldNumber = 4;
     private string dataJson_ = "";
     /// <summary>
-    /// Current values from the form.    
+    /// Current values from the form.
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string DataJson {
@@ -4757,7 +5185,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[22]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[23]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -4923,7 +5351,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[23]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[24]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5055,7 +5483,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[24]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[25]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5254,7 +5682,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[25]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[26]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5449,7 +5877,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[26]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[27]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5582,7 +6010,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[27]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[28]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5720,7 +6148,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[28]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[29]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5887,6 +6315,342 @@ namespace Pub {
 
   }
 
+  public sealed partial class ConfigureReplicationRequest : pb::IMessage<ConfigureReplicationRequest> {
+    private static readonly pb::MessageParser<ConfigureReplicationRequest> _parser = new pb::MessageParser<ConfigureReplicationRequest>(() => new ConfigureReplicationRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ConfigureReplicationRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[30]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationRequest(ConfigureReplicationRequest other) : this() {
+      form_ = other.form_ != null ? other.form_.Clone() : null;
+      schema_ = other.schema_ != null ? other.schema_.Clone() : null;
+      versions_ = other.versions_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationRequest Clone() {
+      return new ConfigureReplicationRequest(this);
+    }
+
+    /// <summary>Field number for the "form" field.</summary>
+    public const int FormFieldNumber = 1;
+    private global::Pub.ConfigurationFormRequest form_;
+    /// <summary>
+    /// Configuration object to build the ui
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pub.ConfigurationFormRequest Form {
+      get { return form_; }
+      set {
+        form_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "schema" field.</summary>
+    public const int SchemaFieldNumber = 2;
+    private global::Pub.Schema schema_;
+    /// <summary>
+    /// The schema (based on a shape) which is being replicated.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pub.Schema Schema {
+      get { return schema_; }
+      set {
+        schema_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "versions" field.</summary>
+    public const int VersionsFieldNumber = 3;
+    private static readonly pb::FieldCodec<global::Pub.ReplicationWriteVersion> _repeated_versions_codec
+        = pb::FieldCodec.ForMessage(26, global::Pub.ReplicationWriteVersion.Parser);
+    private readonly pbc::RepeatedField<global::Pub.ReplicationWriteVersion> versions_ = new pbc::RepeatedField<global::Pub.ReplicationWriteVersion>();
+    /// <summary>
+    /// The versions which will be written back with this replication.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pub.ReplicationWriteVersion> Versions {
+      get { return versions_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ConfigureReplicationRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ConfigureReplicationRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Form, other.Form)) return false;
+      if (!object.Equals(Schema, other.Schema)) return false;
+      if(!versions_.Equals(other.versions_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (form_ != null) hash ^= Form.GetHashCode();
+      if (schema_ != null) hash ^= Schema.GetHashCode();
+      hash ^= versions_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (form_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Form);
+      }
+      if (schema_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Schema);
+      }
+      versions_.WriteTo(output, _repeated_versions_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (form_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Form);
+      }
+      if (schema_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Schema);
+      }
+      size += versions_.CalculateSize(_repeated_versions_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ConfigureReplicationRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.form_ != null) {
+        if (form_ == null) {
+          form_ = new global::Pub.ConfigurationFormRequest();
+        }
+        Form.MergeFrom(other.Form);
+      }
+      if (other.schema_ != null) {
+        if (schema_ == null) {
+          schema_ = new global::Pub.Schema();
+        }
+        Schema.MergeFrom(other.Schema);
+      }
+      versions_.Add(other.versions_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (form_ == null) {
+              form_ = new global::Pub.ConfigurationFormRequest();
+            }
+            input.ReadMessage(form_);
+            break;
+          }
+          case 18: {
+            if (schema_ == null) {
+              schema_ = new global::Pub.Schema();
+            }
+            input.ReadMessage(schema_);
+            break;
+          }
+          case 26: {
+            versions_.AddEntriesFrom(input, _repeated_versions_codec);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ConfigureReplicationResponse : pb::IMessage<ConfigureReplicationResponse> {
+    private static readonly pb::MessageParser<ConfigureReplicationResponse> _parser = new pb::MessageParser<ConfigureReplicationResponse>(() => new ConfigureReplicationResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ConfigureReplicationResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[31]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationResponse(ConfigureReplicationResponse other) : this() {
+      form_ = other.form_ != null ? other.form_.Clone() : null;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ConfigureReplicationResponse Clone() {
+      return new ConfigureReplicationResponse(this);
+    }
+
+    /// <summary>Field number for the "form" field.</summary>
+    public const int FormFieldNumber = 1;
+    private global::Pub.ConfigurationFormResponse form_;
+    /// <summary>
+    /// Configuration object to build the ui
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pub.ConfigurationFormResponse Form {
+      get { return form_; }
+      set {
+        form_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ConfigureReplicationResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ConfigureReplicationResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!object.Equals(Form, other.Form)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (form_ != null) hash ^= Form.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (form_ != null) {
+        output.WriteRawTag(10);
+        output.WriteMessage(Form);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (form_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Form);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ConfigureReplicationResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.form_ != null) {
+        if (form_ == null) {
+          form_ = new global::Pub.ConfigurationFormResponse();
+        }
+        Form.MergeFrom(other.Form);
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            if (form_ == null) {
+              form_ = new global::Pub.ConfigurationFormResponse();
+            }
+            input.ReadMessage(form_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
   public sealed partial class PrepareWriteRequest : pb::IMessage<PrepareWriteRequest> {
     private static readonly pb::MessageParser<PrepareWriteRequest> _parser = new pb::MessageParser<PrepareWriteRequest>(() => new PrepareWriteRequest());
     private pb::UnknownFieldSet _unknownFields;
@@ -5895,7 +6659,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[29]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[32]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -5914,6 +6678,7 @@ namespace Pub {
     public PrepareWriteRequest(PrepareWriteRequest other) : this() {
       commitSlaSeconds_ = other.commitSlaSeconds_;
       schema_ = other.schema_ != null ? other.schema_.Clone() : null;
+      replication_ = other.replication_ != null ? other.replication_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -5926,7 +6691,7 @@ namespace Pub {
     public const int CommitSlaSecondsFieldNumber = 1;
     private int commitSlaSeconds_;
     /// <summary>
-    /// Time in seconds that a record write back must be acknowledged by the plugin in
+    /// Time in seconds that a record write back must be acknowledged by the plugin
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CommitSlaSeconds {
@@ -5950,6 +6715,22 @@ namespace Pub {
       }
     }
 
+    /// <summary>Field number for the "replication" field.</summary>
+    public const int ReplicationFieldNumber = 3;
+    private global::Pub.ReplicationWriteRequest replication_;
+    /// <summary>
+    /// Replication information; if this is present, plugin should
+    /// prepare replication targets and expect incoming records to contain
+    /// replication data.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public global::Pub.ReplicationWriteRequest Replication {
+      get { return replication_; }
+      set {
+        replication_ = value;
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as PrepareWriteRequest);
@@ -5965,6 +6746,7 @@ namespace Pub {
       }
       if (CommitSlaSeconds != other.CommitSlaSeconds) return false;
       if (!object.Equals(Schema, other.Schema)) return false;
+      if (!object.Equals(Replication, other.Replication)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -5973,6 +6755,7 @@ namespace Pub {
       int hash = 1;
       if (CommitSlaSeconds != 0) hash ^= CommitSlaSeconds.GetHashCode();
       if (schema_ != null) hash ^= Schema.GetHashCode();
+      if (replication_ != null) hash ^= Replication.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -5994,6 +6777,10 @@ namespace Pub {
         output.WriteRawTag(18);
         output.WriteMessage(Schema);
       }
+      if (replication_ != null) {
+        output.WriteRawTag(26);
+        output.WriteMessage(Replication);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -6007,6 +6794,9 @@ namespace Pub {
       }
       if (schema_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Schema);
+      }
+      if (replication_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Replication);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -6027,6 +6817,12 @@ namespace Pub {
           schema_ = new global::Pub.Schema();
         }
         Schema.MergeFrom(other.Schema);
+      }
+      if (other.replication_ != null) {
+        if (replication_ == null) {
+          replication_ = new global::Pub.ReplicationWriteRequest();
+        }
+        Replication.MergeFrom(other.Replication);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -6050,6 +6846,467 @@ namespace Pub {
             input.ReadMessage(schema_);
             break;
           }
+          case 26: {
+            if (replication_ == null) {
+              replication_ = new global::Pub.ReplicationWriteRequest();
+            }
+            input.ReadMessage(replication_);
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  public sealed partial class ReplicationWriteRequest : pb::IMessage<ReplicationWriteRequest> {
+    private static readonly pb::MessageParser<ReplicationWriteRequest> _parser = new pb::MessageParser<ReplicationWriteRequest>(() => new ReplicationWriteRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ReplicationWriteRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[33]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteRequest(ReplicationWriteRequest other) : this() {
+      versions_ = other.versions_.Clone();
+      settingsJson_ = other.settingsJson_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteRequest Clone() {
+      return new ReplicationWriteRequest(this);
+    }
+
+    /// <summary>Field number for the "versions" field.</summary>
+    public const int VersionsFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Pub.ReplicationWriteVersion> _repeated_versions_codec
+        = pb::FieldCodec.ForMessage(10, global::Pub.ReplicationWriteVersion.Parser);
+    private readonly pbc::RepeatedField<global::Pub.ReplicationWriteVersion> versions_ = new pbc::RepeatedField<global::Pub.ReplicationWriteVersion>();
+    /// <summary>
+    /// The versions which may be present on each replicated record.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::RepeatedField<global::Pub.ReplicationWriteVersion> Versions {
+      get { return versions_; }
+    }
+
+    /// <summary>Field number for the "settings_json" field.</summary>
+    public const int SettingsJsonFieldNumber = 2;
+    private string settingsJson_ = "";
+    /// <summary>
+    /// The settings produced using the ConfigureReplication operation.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SettingsJson {
+      get { return settingsJson_; }
+      set {
+        settingsJson_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ReplicationWriteRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ReplicationWriteRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!versions_.Equals(other.versions_)) return false;
+      if (SettingsJson != other.SettingsJson) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= versions_.GetHashCode();
+      if (SettingsJson.Length != 0) hash ^= SettingsJson.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      versions_.WriteTo(output, _repeated_versions_codec);
+      if (SettingsJson.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(SettingsJson);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      size += versions_.CalculateSize(_repeated_versions_codec);
+      if (SettingsJson.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SettingsJson);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ReplicationWriteRequest other) {
+      if (other == null) {
+        return;
+      }
+      versions_.Add(other.versions_);
+      if (other.SettingsJson.Length != 0) {
+        SettingsJson = other.SettingsJson;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            versions_.AddEntriesFrom(input, _repeated_versions_codec);
+            break;
+          }
+          case 18: {
+            SettingsJson = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  /// <summary>
+  /// The version source information, which should be used to
+  /// store the version records in a way which lets the source
+  /// of the version be visible to users of the replicated data.
+  /// </summary>
+  public sealed partial class ReplicationWriteVersion : pb::IMessage<ReplicationWriteVersion> {
+    private static readonly pb::MessageParser<ReplicationWriteVersion> _parser = new pb::MessageParser<ReplicationWriteVersion>(() => new ReplicationWriteVersion());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pb::MessageParser<ReplicationWriteVersion> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[34]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteVersion() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteVersion(ReplicationWriteVersion other) : this() {
+      connectionId_ = other.connectionId_;
+      connectionName_ = other.connectionName_;
+      jobId_ = other.jobId_;
+      jobName_ = other.jobName_;
+      schemaId_ = other.schemaId_;
+      schemaName_ = other.schemaName_;
+      capturedSchemaDataProperties_ = other.capturedSchemaDataProperties_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public ReplicationWriteVersion Clone() {
+      return new ReplicationWriteVersion(this);
+    }
+
+    /// <summary>Field number for the "connection_id" field.</summary>
+    public const int ConnectionIdFieldNumber = 1;
+    private string connectionId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ConnectionId {
+      get { return connectionId_; }
+      set {
+        connectionId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "connection_name" field.</summary>
+    public const int ConnectionNameFieldNumber = 2;
+    private string connectionName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string ConnectionName {
+      get { return connectionName_; }
+      set {
+        connectionName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "job_id" field.</summary>
+    public const int JobIdFieldNumber = 3;
+    private string jobId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string JobId {
+      get { return jobId_; }
+      set {
+        jobId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "job_name" field.</summary>
+    public const int JobNameFieldNumber = 4;
+    private string jobName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string JobName {
+      get { return jobName_; }
+      set {
+        jobName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "schema_id" field.</summary>
+    public const int SchemaIdFieldNumber = 5;
+    private string schemaId_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaId {
+      get { return schemaId_; }
+      set {
+        schemaId_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "schema_name" field.</summary>
+    public const int SchemaNameFieldNumber = 6;
+    private string schemaName_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string SchemaName {
+      get { return schemaName_; }
+      set {
+        schemaName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "captured_schema_data_properties" field.</summary>
+    public const int CapturedSchemaDataPropertiesFieldNumber = 7;
+    private static readonly pbc::MapField<string, global::Pub.PropertyType>.Codec _map_capturedSchemaDataProperties_codec
+        = new pbc::MapField<string, global::Pub.PropertyType>.Codec(pb::FieldCodec.ForString(10), pb::FieldCodec.ForEnum(16, x => (int) x, x => (global::Pub.PropertyType) x), 58);
+    private readonly pbc::MapField<string, global::Pub.PropertyType> capturedSchemaDataProperties_ = new pbc::MapField<string, global::Pub.PropertyType>();
+    /// <summary>
+    /// If the version includes any captured schema data,
+    /// this map will be a map of property ID to property type for
+    /// each captured property.
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public pbc::MapField<string, global::Pub.PropertyType> CapturedSchemaDataProperties {
+      get { return capturedSchemaDataProperties_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override bool Equals(object other) {
+      return Equals(other as ReplicationWriteVersion);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public bool Equals(ReplicationWriteVersion other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (ConnectionId != other.ConnectionId) return false;
+      if (ConnectionName != other.ConnectionName) return false;
+      if (JobId != other.JobId) return false;
+      if (JobName != other.JobName) return false;
+      if (SchemaId != other.SchemaId) return false;
+      if (SchemaName != other.SchemaName) return false;
+      if (!CapturedSchemaDataProperties.Equals(other.CapturedSchemaDataProperties)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (ConnectionId.Length != 0) hash ^= ConnectionId.GetHashCode();
+      if (ConnectionName.Length != 0) hash ^= ConnectionName.GetHashCode();
+      if (JobId.Length != 0) hash ^= JobId.GetHashCode();
+      if (JobName.Length != 0) hash ^= JobName.GetHashCode();
+      if (SchemaId.Length != 0) hash ^= SchemaId.GetHashCode();
+      if (SchemaName.Length != 0) hash ^= SchemaName.GetHashCode();
+      hash ^= CapturedSchemaDataProperties.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (ConnectionId.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(ConnectionId);
+      }
+      if (ConnectionName.Length != 0) {
+        output.WriteRawTag(18);
+        output.WriteString(ConnectionName);
+      }
+      if (JobId.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(JobId);
+      }
+      if (JobName.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(JobName);
+      }
+      if (SchemaId.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(SchemaId);
+      }
+      if (SchemaName.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(SchemaName);
+      }
+      capturedSchemaDataProperties_.WriteTo(output, _map_capturedSchemaDataProperties_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public int CalculateSize() {
+      int size = 0;
+      if (ConnectionId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ConnectionId);
+      }
+      if (ConnectionName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(ConnectionName);
+      }
+      if (JobId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(JobId);
+      }
+      if (JobName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(JobName);
+      }
+      if (SchemaId.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaId);
+      }
+      if (SchemaName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(SchemaName);
+      }
+      size += capturedSchemaDataProperties_.CalculateSize(_map_capturedSchemaDataProperties_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(ReplicationWriteVersion other) {
+      if (other == null) {
+        return;
+      }
+      if (other.ConnectionId.Length != 0) {
+        ConnectionId = other.ConnectionId;
+      }
+      if (other.ConnectionName.Length != 0) {
+        ConnectionName = other.ConnectionName;
+      }
+      if (other.JobId.Length != 0) {
+        JobId = other.JobId;
+      }
+      if (other.JobName.Length != 0) {
+        JobName = other.JobName;
+      }
+      if (other.SchemaId.Length != 0) {
+        SchemaId = other.SchemaId;
+      }
+      if (other.SchemaName.Length != 0) {
+        SchemaName = other.SchemaName;
+      }
+      capturedSchemaDataProperties_.Add(other.capturedSchemaDataProperties_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            ConnectionId = input.ReadString();
+            break;
+          }
+          case 18: {
+            ConnectionName = input.ReadString();
+            break;
+          }
+          case 26: {
+            JobId = input.ReadString();
+            break;
+          }
+          case 34: {
+            JobName = input.ReadString();
+            break;
+          }
+          case 42: {
+            SchemaId = input.ReadString();
+            break;
+          }
+          case 50: {
+            SchemaName = input.ReadString();
+            break;
+          }
+          case 58: {
+            capturedSchemaDataProperties_.AddEntriesFrom(input, _map_capturedSchemaDataProperties_codec);
+            break;
+          }
         }
       }
     }
@@ -6064,7 +7321,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[30]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[35]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6165,7 +7422,7 @@ namespace Pub {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[31]; }
+      get { return global::Pub.PublisherReflection.Descriptor.MessageTypes[36]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

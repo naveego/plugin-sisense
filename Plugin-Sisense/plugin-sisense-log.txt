@@ -1,0 +1,53 @@
+10/22/19 9:41:58 AM Started on port 43373
+10/22/19 9:42:05 AM Plugin exiting...
+10/22/19 9:55:29 AM Started on port 37739
+10/22/19 9:55:45 AM Plugin exiting...
+10/22/19 9:58:37 AM Started on port 46857
+10/22/19 9:58:40 AM Plugin exiting...
+10/22/19 10:51:27 AM Started on port 35383
+10/22/19 10:52:11 AM Started on port 40277
+10/22/19 10:54:11 AM Started on port 44745
+10/22/19 10:54:12 AM No service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider' has been registered.
+10/22/19 10:55:36 AM Started on port 32963
+10/22/19 10:56:43 AM Started on port 34043
+10/22/19 11:03:17 AM Started on port 41061
+10/22/19 11:05:44 AM Started on port 46125
+10/22/19 11:08:28 AM Started on port 44577
+10/22/19 11:12:27 AM Started on port 44441
+10/22/19 11:15:51 AM Started on port 46101
+10/22/19 11:19:08 AM Plugin exiting...
+10/22/19 3:24:05 PM Started on port 39707
+10/22/19 3:28:22 PM Started on port 35273
+10/22/19 3:32:24 PM Started on port 45311
+10/22/19 3:37:41 PM Started on port 37819
+10/22/19 3:37:42 PM ["http://0.0.0.0:43829"]
+10/22/19 3:38:21 PM Started on port 36451
+10/22/19 3:38:22 PM ["http://0.0.0.0:44147"]
+10/22/19 3:39:03 PM Started on port 33325
+10/22/19 3:39:03 PM ["http://0.0.0.0:43611"]
+10/22/19 3:42:17 PM Started on port 34653
+10/22/19 3:48:00 PM Started on port 37233
+10/22/19 3:48:00 PM Object reference not set to an instance of an object.
+10/22/19 3:59:02 PM Started on port 39723
+10/22/19 3:59:05 PM Plugin exiting...
+10/22/19 4:44:45 PM Started on port 33721
+10/22/19 4:45:23 PM Started on port 39441
+10/22/19 4:50:34 PM Started on port 41637
+10/22/19 4:53:08 PM Started on port 41535
+10/22/19 4:53:41 PM Plugin exiting...
+10/22/19 4:55:16 PM Started on port 38383
+10/22/19 4:55:25 PM Plugin exiting...
+10/22/19 5:00:30 PM Started on port 45189
+10/22/19 5:05:06 PM Plugin exiting...
+10/22/19 5:10:26 PM Started on port 39899
+10/22/19 5:11:09 PM Started on port 36581
+10/22/19 5:12:39 PM Started on port 45931
+10/22/19 5:13:21 PM Plugin exiting...
+10/22/19 5:13:26 PM Started on port 42123
+10/22/19 5:14:49 PM Started on port 38343
+10/22/19 5:16:39 PM Plugin exiting...
+10/22/19 5:23:52 PM Dynamic port binding is not supported when binding to localhost. You must either bind to 127.0.0.1:0 or [::1]:0, or both.
+10/22/19 5:24:20 PM Started on port 33639
+10/22/19 5:25:21 PM Started on port 40925
+10/22/19 5:25:52 PM Started on port 43435
+10/22/19 5:26:26 PM Plugin exiting...

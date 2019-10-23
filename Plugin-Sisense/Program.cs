@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
 using Grpc.Core;
-using Plugin_Naveego_Legacy.Helper;
+using Microsoft.AspNetCore.Hosting.Server.Features;
+using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
+using Plugin_Sisense.API.Replication;
+using Plugin_Sisense.Helper;
 using Pub;
 
-namespace Plugin_Naveego_Legacy
+namespace Plugin_Sisense
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static Server Server;
+        public static void Main(string[] args)
         {
             try
             {
@@ -20,35 +27,47 @@ namespace Plugin_Naveego_Legacy
                 
                 // clean old logs on start up
                 Logger.Clean();
-            
-                // create new server and start it
-                Server server = new Server
-                {
-                    Services = { Publisher.BindService(new Plugin.Plugin()) },
-                    Ports = { new ServerPort("localhost", 0, ServerCredentials.Insecure) }
-                };
-                server.Start();
-    
-                // write out the connection information for the Hashicorp plugin runner
-                var output = String.Format("{0}|{1}|{2}|{3}:{4}|{5}",
-                    1, 1, "tcp", "localhost", server.Ports.First().BoundPort, "grpc");
-            
-                Console.WriteLine(output);
-            
-                Logger.Info("Started on port " + server.Ports.First().BoundPort);
-                
-                // wait to exit until given input
-                Console.ReadLine();
-                
+
+                // wait to exit until closed
+                CreateWebHostBuilder(args).Build().Run();
+
                 Logger.Info("Plugin exiting...");
 
                 // shutdown server
-                server.ShutdownAsync().Wait();
+                Server.ShutdownAsync().Wait();
             }
             catch (Exception e)
             {
                 Logger.Error(e.Message);
             }
         }
+        
+        public static void Run()
+        {
+            // create new server and start it
+            Server = new Grpc.Core.Server
+            {
+                Services = { Publisher.BindService(new Plugin.Plugin()) },
+                Ports = { new ServerPort("localhost", 0, ServerCredentials.Insecure) }
+            };
+            Server.Start();
+    
+            // write out the connection information for the Hashicorp plugin runner
+            var output = String.Format("{0}|{1}|{2}|{3}:{4}|{5}",
+                1, 1, "tcp", "localhost", Server.Ports.First().BoundPort, "grpc");
+            
+            Console.WriteLine(output);
+            
+            Logger.Info("Started on port " + Server.Ports.First().BoundPort);
+            
+            // create the config file for Sisense and restart Sisense
+            var sisenseConfig = Replication.GenerateSisenseConfig();
+            Replication.AddSisenseService(sisenseConfig);
+        }
+
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseUrls("http://127.0.0.1:0")
+                .UseStartup<Startup>();
     }
 }
