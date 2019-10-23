@@ -62,7 +62,7 @@ namespace Plugin_Sisense
             
             // create the config file for Sisense and restart Sisense
             var sisenseConfig = Replication.GenerateSisenseConfig();
-            Replication.RestartSisenseService(sisenseConfig);
+            Replication.AddSisenseService(sisenseConfig);
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

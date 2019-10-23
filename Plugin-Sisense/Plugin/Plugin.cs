@@ -284,7 +284,7 @@ namespace Plugin_Sisense.Plugin
                         
                         // send record to source system
                         // timeout if it takes longer than the sla
-                        var task = Task.Run(() => Replication.WriteRecord(record, config));
+                        var task = Task.Run(() => Replication.WriteRecord(schema, record, config));
                         if (task.Wait(TimeSpan.FromSeconds(sla)))
                         {
                             // send ack
