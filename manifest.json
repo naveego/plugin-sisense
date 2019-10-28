@@ -1,10 +1,10 @@
 {
   "id": "plugin-sisense",
   "displayName": "Sisense",
-  "description": "Publisher which pulls data from a Sisense ElastiCube",
+  "description": "Publisher which delivers Golden Records into a Sisense ElastiCube",
   "apiVersion": "2",
   "versionDescription": "Version 2",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "iconFile": "icon.jpg",
   "executable": "Plugin-Sisense",
   "kind": "publisher",
