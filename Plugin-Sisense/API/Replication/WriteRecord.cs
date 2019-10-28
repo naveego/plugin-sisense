@@ -19,16 +19,14 @@ namespace Plugin_Sisense.API.Replication
         /// </summary>
         /// <param name="schema"></param>
         /// <param name="record"></param>
-        /// <param name="config"></param>
         /// <returns>Error message string</returns>
-        public static string WriteRecord(Schema schema, Record record, ConfigureReplicationFormData config)
+        public static string WriteRecord(Schema schema, Record record)
         {
             try
             {
                 Directory.CreateDirectory(Path);
 
                 var recordData = GetNamedRecordData(schema, record);
-//                var safeShapeName = string.Concat(config.ShapeName.Where(c => !char.IsWhiteSpace(c)));
                 var safeShapeName = string.Concat(schema.Name.Where(c => !char.IsWhiteSpace(c)));
 
                 using (var db = new LiteDatabase($"{Path}/SisenseReplication.db"))
@@ -52,19 +50,19 @@ namespace Plugin_Sisense.API.Replication
                     if (recordData.Count == 0)
                     {
                         // delete everything for this record
-                        Logger.Info($"shapeId: {config.ShapeName} | recordId: {record.RecordId} - DELETE");
+                        Logger.Info($"shapeId: {safeShapeName} | recordId: {record.RecordId} - DELETE");
                         goldenRecords.Delete(r => r.RecordId == record.RecordId);
                         
                         foreach (var versionId in previousRecord.VersionRecordIds)
                         {
-                            Logger.Info($"shapeId: {config.ShapeName} | recordId: {record.RecordId} | versionId: {versionId} - DELETE");
+                            Logger.Info($"shapeId: {safeShapeName} | recordId: {record.RecordId} | versionId: {versionId} - DELETE");
                             versions.Delete(r => r.VersionRecordId == versionId);
                         }
                     }
                     else
                     {
                         // update record and remove/add versions
-                        Logger.Info($"shapeId: {config.ShapeName} | recordId: {record.RecordId} - UPSERT");
+                        Logger.Info($"shapeId: {safeShapeName} | recordId: {record.RecordId} - UPSERT");
                         var replicationRecord = new ReplicationGoldenRecord
                         {
                             RecordId = record.RecordId,
@@ -78,14 +76,14 @@ namespace Plugin_Sisense.API.Replication
                         var missingVersions = previousRecord.VersionRecordIds.Except(replicationRecord.VersionRecordIds);
                         foreach (var versionId in missingVersions)
                         {
-                            Logger.Info($"shapeId: {config.ShapeName} | recordId: {record.RecordId} | versionId: {versionId} - DELETE");
+                            Logger.Info($"shapeId: {safeShapeName} | recordId: {record.RecordId} | versionId: {versionId} - DELETE");
                             versions.Delete(r => r.VersionRecordId == versionId);
                         }
                         
                         // upsert other versions
                         foreach (var version in record.Versions)
                         {
-                            Logger.Info($"shapeId: {config.ShapeName} | recordId: {record.RecordId} | versionId: {version.RecordId} - UPSERT");
+                            Logger.Info($"shapeId: {safeShapeName} | recordId: {record.RecordId} | versionId: {version.RecordId} - UPSERT");
                             var versionRecord = new ReplicationVersionRecord
                             {
                                 VersionRecordId =  version.RecordId,
