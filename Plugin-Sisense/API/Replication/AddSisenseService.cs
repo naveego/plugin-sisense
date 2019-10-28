@@ -15,6 +15,8 @@ namespace Plugin_Sisense.API.Replication
         /// <returns>An error string</returns>
         public static void AddSisenseService(SisenseConfig config)
         {
+            Logger.Info("Adding Sisense Config...");
+            
             var configDirectory = @"C:/Program Files/Sisense/DataConnectors/DotNetContainer/Connectors/REST.Naveego.Connector";
             var configFileName = "config.json";
             var dllFileName = "_rest.tag";
@@ -50,6 +52,8 @@ namespace Plugin_Sisense.API.Replication
             {
                 Logger.Error(e.Message);
             }
+            
+            Logger.Info("Added Sisense Config");
         }
     }
 }

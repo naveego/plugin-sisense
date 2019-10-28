@@ -28,7 +28,8 @@ namespace Plugin_Sisense.API.Replication
                 Directory.CreateDirectory(Path);
 
                 var recordData = GetNamedRecordData(schema, record);
-                var safeShapeName = string.Concat(config.ShapeName.Where(c => !char.IsWhiteSpace(c)));
+//                var safeShapeName = string.Concat(config.ShapeName.Where(c => !char.IsWhiteSpace(c)));
+                var safeShapeName = string.Concat(schema.Name.Where(c => !char.IsWhiteSpace(c)));
 
                 using (var db = new LiteDatabase($"{Path}/SisenseReplication.db"))
                 {
