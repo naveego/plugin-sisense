@@ -19,15 +19,17 @@ namespace Plugin_Sisense.API.Replication
         /// </summary>
         /// <param name="schema"></param>
         /// <param name="record"></param>
+        /// <param name="config"></param>
         /// <returns>Error message string</returns>
-        public static string WriteRecord(Schema schema, Record record)
+        public static string WriteRecord(Schema schema, Record record, ConfigureReplicationFormData config)
         {
             try
             {
                 Directory.CreateDirectory(Path);
 
                 var recordData = GetNamedRecordData(schema, record);
-                var safeShapeName = string.Concat(schema.Name.Where(c => !char.IsWhiteSpace(c)));
+//                var safeShapeName = string.Concat(schema.Name.Where(c => !char.IsWhiteSpace(c)));
+                var safeShapeName = string.Concat(config.ShapeName.Where(c => !char.IsWhiteSpace(c)));
 
                 using (var db = new LiteDatabase($"{Path}/SisenseReplication.db"))
                 {
