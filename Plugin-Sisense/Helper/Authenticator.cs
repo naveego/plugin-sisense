@@ -21,7 +21,7 @@ namespace Plugin_Sisense.Helper
         }
 
         /// <summary>
-        /// Get a token for the Salesforce API
+        /// Get a token for the Sisense API
         /// </summary>
         /// <returns></returns>
         public async Task<string> GetToken()

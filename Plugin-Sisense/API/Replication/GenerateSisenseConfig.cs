@@ -6,6 +6,8 @@ using LiteDB;
 using Newtonsoft.Json;
 using Plugin_Sisense.DataContracts;
 using Plugin_Sisense.Helper;
+using Logger = Plugin_Sisense.Helper.Logger;
+
 
 namespace Plugin_Sisense.API.Replication
 {
@@ -17,6 +19,8 @@ namespace Plugin_Sisense.API.Replication
         /// <returns></returns>
         public static SisenseConfig GenerateSisenseConfig()
         {
+            Logger.Info("Generating Sisense Config...");
+            
             var apiBaseUri = GetBindingHostedService.ServerAddresses.Addresses.First();
             var tables = new List<SisenseTable>();
             
@@ -42,6 +46,8 @@ namespace Plugin_Sisense.API.Replication
                     tables.Add(table);
                 }
             }
+            
+            Logger.Info("Generated Sisense Config");
             
             return new SisenseConfig
             {
