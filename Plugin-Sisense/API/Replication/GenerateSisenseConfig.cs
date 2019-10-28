@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using LiteDB;
@@ -23,6 +24,8 @@ namespace Plugin_Sisense.API.Replication
             
             var apiBaseUri = GetBindingHostedService.ServerAddresses.Addresses.First();
             var tables = new List<SisenseTable>();
+            
+            Directory.CreateDirectory(Path);
             
             using (var db = new LiteDatabase($"{Path}/SisenseReplication.db"))
             {

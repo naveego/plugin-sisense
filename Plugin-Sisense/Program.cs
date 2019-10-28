@@ -59,10 +59,17 @@ namespace Plugin_Sisense
             Console.WriteLine(output);
             
             Logger.Info("Started on port " + Server.Ports.First().BoundPort);
-            
-            // create the config file for Sisense and restart Sisense
-            var sisenseConfig = Replication.GenerateSisenseConfig();
-            Replication.AddSisenseService(sisenseConfig);
+
+            try
+            {
+                // create the config file for Sisense and restart Sisense
+                var sisenseConfig = Replication.GenerateSisenseConfig();
+                Replication.AddSisenseService(sisenseConfig);
+            }
+            catch (Exception e)
+            {
+                Logger.Error(e.Message);
+            }
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
