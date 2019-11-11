@@ -4,7 +4,7 @@
   "description": "Publisher which delivers Golden Records into a Sisense ElastiCube",
   "apiVersion": "2",
   "versionDescription": "Version 2",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "iconFile": "icon.jpg",
   "executable": "Plugin-Sisense",
   "kind": "publisher",
