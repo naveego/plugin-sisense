@@ -17,8 +17,8 @@ namespace Plugin_Sisense.Controllers
 
         [HttpGet]
         [Route("goldenrecords/{shapename}")]
-        [ProducesResponseType(typeof(List<Dictionary<string,object>>), 200)]
-        public List<Dictionary<string,object>> AllGoldenRecords([FromRoute] string shapename)
+        [ProducesResponseType(typeof(ReadResult), 200)]
+        public ReadResult AllGoldenRecords([FromRoute] string shapename)
         {
             if (string.IsNullOrEmpty(shapename))
             {
@@ -34,8 +34,11 @@ namespace Plugin_Sisense.Controllers
                 var goldenRecords = db.GetCollection<ReplicationGoldenRecord>($"{safeShapeName}_golden_records");
 
                 var records = goldenRecords.FindAll();
-                
-                return records.Select(r => r.Data).ToList();
+
+                return new ReadResult
+                {
+                    Data = records.Select(r => r.Data).ToList()
+                };
             }
         }
         
@@ -65,8 +68,8 @@ namespace Plugin_Sisense.Controllers
         
         [HttpGet]
         [Route("versions/{shapename}")]
-        [ProducesResponseType(typeof(List<Dictionary<string,object>>), 200)]
-        public List<Dictionary<string,object>> AllVersions([FromRoute] string shapename)
+        [ProducesResponseType(typeof(ReadResult), 200)]
+        public ReadResult AllVersions([FromRoute] string shapename)
         {
             if (string.IsNullOrEmpty(shapename))
             {
@@ -82,8 +85,11 @@ namespace Plugin_Sisense.Controllers
                 var versions = db.GetCollection<ReplicationVersionRecord>($"{safeShapeName}_versions");
 
                 var records = versions.FindAll();
-                
-                return records.Select(r => r.Data).ToList();
+
+                return new ReadResult
+                {
+                    Data = records.Select(r => r.Data).ToList()
+                };
             }
         }
         
