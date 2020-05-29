@@ -40,7 +40,7 @@ namespace Plugin_Sisense
             // Api Config
             services.AddRouting(options => { options.LowercaseUrls = true; });
             services.AddMvcCore()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0)
                 .AddVersionedApiExplorer(o =>
                 {
                     o.DefaultApiVersion = new ApiVersion(1, 0);
@@ -51,16 +51,17 @@ namespace Plugin_Sisense
                 .AddAuthorization()
                 .AddFormatterMappings()
                 .AddDataAnnotations()
-                .AddJsonFormatters()
-                .AddControllersAsServices()
-                .AddJsonOptions(o =>
+                .AddControllersAsServices();
+
+            services.AddControllers()
+                .AddNewtonsoftJson(o =>
                 {
                     o.SerializerSettings.Converters.Add(new StringEnumConverter
                     {
                         NamingStrategy = new CamelCaseNamingStrategy()
                     });
                 });
-            
+
             services.AddApiVersioning(o => { o.ReportApiVersions = true; });
             
             services.AddSingleton<IHostedService, GetBindingHostedService>();

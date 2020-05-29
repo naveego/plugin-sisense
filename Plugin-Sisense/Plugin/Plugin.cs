@@ -3,11 +3,12 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Grpc.Core;
+using Naveego.Sdk.Plugins;
 using Newtonsoft.Json;
 using Plugin_Sisense.API.Replication;
 using Plugin_Sisense.DataContracts;
 using Plugin_Sisense.Helper;
-using Pub;
+
 
 namespace Plugin_Sisense.Plugin
 {
@@ -44,7 +45,7 @@ namespace Plugin_Sisense.Plugin
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message, context);
                 return new ConnectResponse
                 {
                     OauthStateJson = request.OauthStateJson,
@@ -61,8 +62,14 @@ namespace Plugin_Sisense.Plugin
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
-                throw;
+                Logger.Error(e, e.Message, context);
+                return new ConnectResponse
+                {
+                    OauthStateJson = request.OauthStateJson,
+                    ConnectionError = "",
+                    OauthError = "",
+                    SettingsError = e.Message
+                };
             }
 
             // attempt to call the Legacy API api
@@ -76,7 +83,7 @@ namespace Plugin_Sisense.Plugin
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message, context);
 
                 return new ConnectResponse
                 {
@@ -137,7 +144,7 @@ namespace Plugin_Sisense.Plugin
 //            }
 //            catch (Exception e)
 //            {
-//                Logger.Error(e.Message);
+//                Logger.Error(e, e.Message);
 //                throw;
 //            }
 //
@@ -209,7 +216,7 @@ namespace Plugin_Sisense.Plugin
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message, context);
                 return Task.FromResult(new ConfigureReplicationResponse
                 {
                     Form = new ConfigurationFormResponse
@@ -321,8 +328,7 @@ namespace Plugin_Sisense.Plugin
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
-                throw;
+                Logger.Error(e, e.Message, context);
             }
         }
 

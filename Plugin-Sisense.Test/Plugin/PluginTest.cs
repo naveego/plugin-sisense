@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Grpc.Core;
-using Pub;
+using Naveego.Sdk.Plugins;
 using RichardSzalay.MockHttp;
 using Xunit;
-using Record = Pub.Record;
+using Record = Naveego.Sdk.Plugins.Record;
 
 namespace Plugin_Sisense.Plugin
 {

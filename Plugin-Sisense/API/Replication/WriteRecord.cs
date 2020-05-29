@@ -4,9 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using LiteDB;
+using Naveego.Sdk.Plugins;
 using Newtonsoft.Json;
 using Plugin_Sisense.DataContracts;
-using Pub;
+
 using Logger = Plugin_Sisense.Helper.Logger;
 
 namespace Plugin_Sisense.API.Replication
@@ -120,7 +121,7 @@ namespace Plugin_Sisense.API.Replication
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }

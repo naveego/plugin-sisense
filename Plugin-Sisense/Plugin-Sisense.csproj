@@ -1,30 +1,28 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.2</TargetFramework>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
         <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <RootNamespace>Plugin_Sisense</RootNamespace>
         <RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
+        <LangVersion>default</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Google.Protobuf" Version="3.10.0" />
-        <PackageReference Include="Grpc" Version="2.24.0" />
-        <PackageReference Include="Grpc.HealthCheck" Version="2.24.0" />
-        <PackageReference Include="Grpc.Tools" Version="2.24.0" />
         <PackageReference Include="Humanizer.Core" Version="2.7.9" />
         <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
         <PackageReference Include="LiteDB" Version="4.1.4" />
         <PackageReference Include="Microsoft.AspNetCore.App" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.4" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="2.3.0" />
         <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="2.2.0" />
+        <PackageReference Include="Naveego.Sdk" Version="1.1.0" />
         <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="2.5.0" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="API" />
-      <Folder Include="Publisher" />
     </ItemGroup>
 
     <ItemGroup>

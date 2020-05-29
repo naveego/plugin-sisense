@@ -34,7 +34,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
             
@@ -52,7 +52,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }
@@ -74,7 +74,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
             
@@ -93,7 +93,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }
@@ -115,7 +115,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
             
@@ -134,7 +134,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }
@@ -156,7 +156,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
             
@@ -175,7 +175,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }
@@ -196,7 +196,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
             
@@ -214,7 +214,7 @@ namespace Plugin_Sisense.Helper
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
                 throw;
             }
         }

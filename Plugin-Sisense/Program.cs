@@ -5,10 +5,11 @@ using Microsoft.AspNetCore.Hosting;
 using Grpc.Core;
 using Microsoft.AspNetCore.Hosting.Server.Features;
 using Microsoft.Extensions.DependencyInjection;
+using Naveego.Sdk.Plugins;
 using Newtonsoft.Json;
 using Plugin_Sisense.API.Replication;
 using Plugin_Sisense.Helper;
-using Pub;
+
 
 namespace Plugin_Sisense
 {
@@ -22,7 +23,7 @@ namespace Plugin_Sisense
                 // Add final chance exception handler
                 AppDomain.CurrentDomain.UnhandledException += (sender, eventArgs) =>
                 {
-                    Logger.Error($"died: {eventArgs.ExceptionObject}");
+                    Logger.Error(null, $"died: {eventArgs.ExceptionObject}");
                 };
                 
                 // clean old logs on start up
@@ -38,7 +39,7 @@ namespace Plugin_Sisense
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
             }
         }
         
@@ -68,7 +69,7 @@ namespace Plugin_Sisense
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
             }
         }
 

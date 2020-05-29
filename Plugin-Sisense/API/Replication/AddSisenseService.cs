@@ -32,7 +32,7 @@ namespace Plugin_Sisense.API.Replication
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
             }
 
             // create the config files
@@ -50,7 +50,7 @@ namespace Plugin_Sisense.API.Replication
             }
             catch (Exception e)
             {
-                Logger.Error(e.Message);
+                Logger.Error(e, e.Message);
             }
             
             Logger.Info("Added Sisense Config");
