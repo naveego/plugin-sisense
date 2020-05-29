@@ -44,7 +44,7 @@ namespace Plugin_Sisense.API.Replication
                         Path = $"v1/replication/goldenrecords/{HttpUtility.UrlEncode(shape.ShapeName)}",
                         Headers = new Dictionary<string, string>(),
                         PathParameters = new List<string>(),
-                        DataPath = ""
+                        DataPath = "data"
                     };
                     tables.Add(table);
                 }
